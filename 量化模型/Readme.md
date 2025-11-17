@@ -9,8 +9,8 @@
 量化回测框架：backtrader或vnpy
 SQL：数据，表格视图查询
 
-项目结构
-first_quant_project/
+项目结构  
+first_quant_project/  
 ├── data/              # 数据文件  
 ├── strategy/          # 策略代码  
 ├── backtest/          # 回测代码  
