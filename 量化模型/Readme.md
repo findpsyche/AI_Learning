@@ -11,10 +11,10 @@ SQL：数据，表格视图查询
 
 项目结构
 first_quant_project/
-├── data/              # 数据文件
-├── strategy/          # 策略代码
-├── backtest/          # 回测代码
-├── analysis/          # 分析代码
-├── results/           # 回测结果
-├── README.md          # 项目说明
-└── requirements.txt   # 依赖包
+├── data/              # 数据文件  
+├── strategy/          # 策略代码  
+├── backtest/          # 回测代码  
+├── analysis/          # 分析代码  
+├── results/           # 回测结果  
+├── README.md          # 项目说明  
+└── requirements.txt   # 依赖包  
