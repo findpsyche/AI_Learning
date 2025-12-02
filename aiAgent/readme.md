@@ -369,8 +369,8 @@ MIT License
 
 ## 📮 联系方式
 
-- Email: your-email@example.com
-- GitHub: https://github.com/your-username
+- Email: findpsyche@gmail.com 
+- GitHub: https://github.com/findpsyche
 
 ---
 
