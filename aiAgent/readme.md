@@ -70,7 +70,7 @@
 
 ```bash
 # 1. 下载部署脚本
-wget https://your-repo/deploy.sh
+wegt https://github.com/findpsyche/AI_Learning/edit/master/aiAgent/deploy.sh
 chmod +x deploy.sh
 
 # 2. 执行部署(需要root权限)
@@ -85,7 +85,7 @@ sudo ./deploy.sh
 #### 步骤1: 克隆项目
 
 ```bash
-git clone https://github.com/your-repo/doc-qa-agent.git
+git clone https://github.com/findpsyche/AI_Learning/edit/master/aiAgent/doc-qa-agent.git
 cd doc-qa-agent
 ```
 
@@ -98,7 +98,7 @@ vim .env
 
 编辑`.env`文件:
 ```env
-OPENAI_API_KEY=sk-your-api-key-here
+OPENAI_API_KEY=sk-your-api-key
 REDIS_HOST=redis
 REDIS_PORT=6379
 ```
@@ -290,35 +290,6 @@ tar -czf vector_stores_backup.tar.gz vector_stores/
 tar -czf uploads_backup.tar.gz uploads/
 ```
 
-## 🎓 项目亮点(面试话术)
-
-### 技术亮点
-
-1. **RAG架构设计**: 实现检索增强生成,结合向量检索和GPT-4生成能力
-2. **性能优化**: 通过Faiss加速语义匹配,Redis缓存减少重复计算
-3. **高可用架构**: 多实例部署 + Nginx负载均衡,实现99.5%稳定性
-4. **Prompt工程**: 优化提示词策略,提升问答准确率至92%
-5. **容器化部署**: Docker统一环境,简化部署流程
-
-### 项目成果
-
-- 🎯 平均响应时间从3.2s优化至0.8s,提升**75%**
-- 🎯 QPS从200提升至500+,提升**150%**
-- 🎯 支撑2000+并发用户,单日处理5000+文档
-- 🎯 问答准确率达92%,满足业务需求
-- 🎯 输出技术文档,加速3个下游项目落地
-
-### 面试话术
-
-**问题1: 如何优化响应时间?**
-> "通过三方面优化:1)引入Faiss向量数据库加速语义检索;2)Redis缓存常用查询结果;3)优化文档分块策略,将chunk_size从2000降至1000,提高检索精度。最终将响应时间从3.2s降至0.8s。"
-
-**问题2: 如何处理高并发?**
-> "采用水平扩展+异步处理:1)Docker多实例部署;2)Nginx负载均衡;3)FastAPI异步框架;4)Redis共享会话。实测支持2000+并发,QPS达500+。"
-
-**问题3: 遇到的最大挑战?**
-> "最大挑战是平衡准确率和性能。通过prompt engineering优化检索策略,调整top_k参数,最终在保证92%准确率的同时,将响应时间控制在1s内。"
-
 ## 🗂️ 项目结构
 
 ```
@@ -336,28 +307,6 @@ doc-qa-agent/
 ├── logs/                  # 日志目录
 └── README.md             # 项目文档
 ```
-
-## 🐛 常见问题
-
-### Q1: OpenAI API调用失败?
-A: 检查API Key是否正确,网络是否可访问OpenAI服务器。可配置代理。
-
-### Q2: 内存不足?
-A: 调整Redis maxmemory参数,或增加服务器内存。
-
-### Q3: 文档解析失败?
-A: 检查文档格式是否支持,文件是否损坏。
-
-### Q4: 响应时间过长?
-A: 检查向量库大小,考虑增加缓存或优化chunk策略。
-
-## 📝 开发计划
-
-- [ ] 支持更多文档格式(Markdown, HTML)
-- [ ] 引入流式输出,提升用户体验
-- [ ] 增加多语言支持
-- [ ] 实现文档对比功能
-- [ ] 添加用户权限管理
 
 ## 🤝 贡献
 
