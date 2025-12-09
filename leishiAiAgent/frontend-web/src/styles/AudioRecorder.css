@@ -1,0 +1,138 @@
+/* 音频录制组件样式 */
+
+.audio-recorder {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 12px;
+}
+
+.waveform-container {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waveform-container canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.recorder-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-record {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #f5576c, #f093fb);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-record:hover:not(:disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(245, 87, 108, 0.4);
+}
+
+.btn-record:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.record-indicator {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border-radius: 50%;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.recording-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  color: #333;
+  font-weight: 500;
+}
+
+.recording-time {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 60px;
+}
+
+.recording-status {
+  font-size: 14px;
+  color: #f5576c;
+}
+
+.btn-stop {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-stop:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.playback-section {
+  text-align: center;
+  padding: 15px;
+  background: #e8f5e9;
+  border-radius: 8px;
+  border-left: 4px solid #43e97b;
+}
+
+.playback-section p {
+  color: #2e7d32;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.playback-section audio {
+  width: 100%;
+  height: 40px;
+}
+
+.error-message {
+  padding: 15px;
+  background: #ffebee;
+  border-left: 4px solid #f5576c;
+  border-radius: 4px;
+  color: #c62828;
+  font-size: 14px;
+}
