@@ -1,0 +1,560 @@
+/**
+ * 声音剧场页面样式
+ * 文件: frontend-web/src/styles/SoundTheatrePage.css
+ */
+
+.sound-theatre-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #333;
+}
+
+.theatre-header {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.theatre-header h1 {
+  margin: 0 0 15px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.theatre-main {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+}
+
+/* 播客模式 */
+.podcast-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.podcast-header {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.podcast-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.podcast-header p {
+  margin: 5px 0 0 0;
+  color: #999;
+}
+
+.podcast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.podcast-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.podcast-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.podcast-cover {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.podcast-card h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.podcast-card p {
+  margin: 0 0 15px 0;
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.podcast-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.duration {
+  font-size: 12px;
+  color: #999;
+}
+
+.play-btn {
+  padding: 6px 12px;
+  background: #f5576c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s;
+}
+
+.play-btn:hover {
+  background: #e63946;
+}
+
+/* 电台模式 */
+.radio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.radio-header {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.radio-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.radio-player {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.radio-display {
+  margin-bottom: 20px;
+}
+
+.radio-frequency {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+  font-family: 'Courier New', monospace;
+}
+
+.radio-wave {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  height: 60px;
+  align-items: flex-end;
+}
+
+.wave {
+  width: 6px;
+  background: linear-gradient(180deg, #f5576c 0%, #f093fb 100%);
+  border-radius: 3px;
+  animation: radioWave 0.8s infinite;
+}
+
+.wave:nth-child(2) {
+  animation-delay: 0.1s;
+  height: 40px;
+}
+
+.wave:nth-child(3) {
+  animation-delay: 0.2s;
+  height: 20px;
+}
+
+@keyframes radioWave {
+  0%, 100% {
+    height: 20px;
+  }
+  50% {
+    height: 60px;
+  }
+}
+
+.radio-info {
+  text-align: left;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.radio-name {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.radio-desc {
+  margin: 0;
+  font-size: 13px;
+  color: #999;
+}
+
+.radio-stations {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.radio-station {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.radio-station:hover,
+.radio-station.active {
+  border-color: #f5576c;
+  background: #fff5f7;
+}
+
+.station-icon {
+  font-size: 30px;
+}
+
+.station-info {
+  flex: 1;
+  text-align: left;
+}
+
+.station-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.station-info p {
+  margin: 5px 0 0 0;
+  font-size: 12px;
+  color: #999;
+}
+
+.station-mood {
+  font-size: 12px;
+  color: #f5576c;
+  font-weight: bold;
+}
+
+/* 有声书模式 */
+.audiobook-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.audiobook-header {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.audiobook-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.audiobook-item {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.book-cover {
+  font-size: 40px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.book-info {
+  flex: 1;
+}
+
+.book-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.author {
+  font-size: 12px;
+  color: #999;
+  margin: 0 0 10px 0;
+}
+
+.book-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+  transition: width 0.3s;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #999;
+  min-width: 60px;
+  text-align: right;
+}
+
+.read-btn {
+  padding: 8px 16px;
+  background: #f5576c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s;
+}
+
+.read-btn:hover {
+  background: #e63946;
+}
+
+.add-book-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.add-book-section h3 {
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.add-book-section p {
+  margin: 0 0 15px 0;
+  color: #999;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* 知识漫谈模式 */
+.talk-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.talk-header {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.talk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.talk-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.talk-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.talk-cover {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.talk-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.speakers {
+  font-size: 12px;
+  color: #999;
+  margin: 0 0 10px 0;
+}
+
+.talk-meta {
+  display: flex;
+  justify-content: space-around;
+  font-size: 12px;
+  color: #999;
+  margin: 0 0 10px 0;
+}
+
+.listen-btn {
+  width: 100%;
+  padding: 8px;
+  background: #f5576c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.3s;
+}
+
+.listen-btn:hover {
+  background: #e63946;
+}
+
+/* 音频播放器 */
+.audio-player {
+  padding: 15px 20px;
+  background: white;
+  border-top: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.player-content {
+  flex: 1;
+}
+
+.player-title {
+  display: block;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.play-pause-btn {
+  background: #f5576c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.play-pause-btn:hover {
+  background: #e63946;
+}
+
+.progress-container {
+  flex: 1;
+  min-width: 200px;
+}
+
+.progress-slider {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  accent-color: #f5576c;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .podcast-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .talk-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .audiobook-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .theatre-header {
+    padding: 15px;
+  }
+  
+  .theatre-main {
+    padding: 15px;
+  }
+  
+  .podcast-grid,
+  .talk-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .audio-player {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .player-controls {
+    width: 100%;
+  }
+  
+  .progress-container {
+    min-width: 100%;
+  }
+}

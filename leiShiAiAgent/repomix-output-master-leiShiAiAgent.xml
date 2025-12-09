@@ -1,0 +1,4082 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+The content has been processed where security check has been disabled.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Security check has been disabled - content may contain sensitive information
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+aiAgent/
+  DocumentAI/
+    readme.md
+  readme.md
+computerVision/
+  readme.md
+data_engineering_skills/
+  data_enginer_project1/
+    readme.md
+  Python + 数据处理/
+    readme.md
+  readme.md
+leiShiAiAgent/
+  backend-ai/
+    app/
+      services/
+        emotion_analyzer.py
+        healing_generator.py
+        music_composer.py
+        podcast_generator.py
+      main.py
+  backend-nodejs/
+    src/
+      app.js
+    .env.example
+  deployment/
+    docker/
+      docker-compose.yml
+      Dockerfile.nodejs
+    scripts/
+      deploy.sh
+  frontend-web/
+    src/
+      App.jsx
+量化模型/
+  analysis/
+    1
+  backtest/
+    1
+  data/
+    first.py
+  results/
+    1
+  strategy/
+    1
+  Readme.md
+  requirements.txt
+README.md
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="aiAgent/DocumentAI/readme.md">
+# 智能文档问答AI Agent系统
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Python](https://img.shields.io/badge/python-3.10+-green)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688)
+![LangChain](https://img.shields.io/badge/LangChain-0.1.0-blueviolet)
+
+## 📋 项目概述
+
+基于GPT-4的多模态文档问答AI Agent系统,支持PDF/Word/PPT等10+文档格式,采用RAG(检索增强生成)架构,实现高准确率、低延迟的智能问答服务。
+
+### 🎯 核心特性
+
+- ✅ **多格式支持**: PDF、Word、PPT、Excel、TXT、CSV等10+格式
+- ✅ **高准确率**: 基于GPT-4和向量检索,问答准确率达92%
+- ✅ **高性能**: 平均响应时间0.8s,QPS 500+
+- ✅ **高并发**: 支持2000+用户并发访问
+- ✅ **高可用**: Docker容器化 + Nginx负载均衡,稳定性99.5%
+- ✅ **智能缓存**: Redis缓存策略,加速重复查询
+- ✅ **对话记忆**: 支持多轮对话上下文管理
+
+## 🏗️ 技术架构
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   Nginx (负载均衡)                    │
+└────────────┬────────────────────────────┬────────────┘
+             │                            │
+   ┌─────────▼─────────┐        ┌────────▼────────────┐
+   │   App Instance 1  │        │   App Instance 2    │
+   │   (FastAPI)       │        │   (FastAPI)         │
+   └─────────┬─────────┘        └─────────┬───────────┘
+             │                            │
+             └──────────┬─────────────────┘
+                        │
+        ┌───────────────▼────────────────┐
+        │        Redis (缓存层)           │
+        └───────────────┬────────────────┘
+                        │
+        ┌───────────────▼────────────────┐
+        │   Faiss (向量数据库)            │
+        └────────────────────────────────┘
+```
+
+### 技术栈
+
+| 组件 | 技术 | 版本 | 说明 |
+|------|------|------|------|
+| Web框架 | FastAPI | 0.104.1 | 高性能异步API框架 |
+| AI引擎 | GPT-4 | - | OpenAI最新模型 |
+| Agent框架 | LangChain | 0.1.0 | Agent编排和RAG |
+| 向量数据库 | Faiss | 1.7.4 | 高速语义检索 |
+| 缓存 | Redis | 7.0 | 分布式缓存 |
+| 负载均衡 | Nginx | latest | 反向代理 |
+| 容器化 | Docker | 24.0+ | 容器化部署 |
+| 编排 | Docker Compose | 2.23+ | 服务编排 |
+
+## 🚀 快速开始
+
+### 前置要求
+
+- Ubuntu 20.04+ / CentOS 7+
+- Docker 24.0+
+- Docker Compose 2.23+
+- OpenAI API Key
+- 4GB+ RAM
+- 20GB+ 磁盘空间
+
+### 一键部署(腾讯云)
+
+```bash
+# 1. 下载部署脚本
+wegt https://github.com/findpsyche/AI_Learning/edit/master/aiAgent/deploy.sh
+chmod +x deploy.sh
+
+# 2. 执行部署(需要root权限)
+sudo ./deploy.sh
+
+# 3. 输入OpenAI API Key
+# 脚本会自动完成所有配置和部署
+```
+
+### 手动部署
+#### 步骤1: 克隆项目
+
+```bash
+git clone https://github.com/findpsyche/AI_Learning/edit/master/aiAgent/doc-qa-agent.git
+cd doc-qa-agent
+```
+
+#### 步骤2: 配置环境变量
+
+```bash
+cp .env.example .env
+vim .env
+```
+
+编辑`.env`文件:
+```env
+OPENAI_API_KEY=sk-your-api-key
+REDIS_HOST=redis
+REDIS_PORT=6379
+```
+
+#### 步骤3: 启动服务
+
+```bash
+# 构建镜像
+docker-compose build
+
+# 启动服务
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+```
+
+#### 步骤4: 验证部署
+
+```bash
+# 健康检查
+curl http://your-server-ip/
+
+# 查看API文档
+# 访问: http://your-server-ip/docs
+```
+
+## 📖 API使用指南
+
+### 1. 上传文档
+
+```bash
+curl -X POST "http://localhost/upload" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@your_document.pdf"
+```
+响应:
+```json
+{
+  "doc_id": "abc123...",
+  "filename": "your_document.pdf",
+  "status": "success",
+  "chunks": 45,
+  "message": "文档处理成功,耗时2.3秒"
+}
+```
+### 2. 问答
+```bash
+curl -X POST "http://localhost/ask" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question": "文档的主要内容是什么?",
+    "doc_id": "abc123...",
+    "session_id": "user_session_1"
+  }'
+```
+响应:
+```json
+{
+  "answer": "根据文档内容...",
+  "source_documents": [
+    {
+      "content": "相关段落内容...",
+      "metadata": {"page": 1}
+    }
+  ],
+  "session_id": "user_session_1",
+  "response_time": 0.85
+}
+```
+### 3. 查看统计
+```bash
+curl http://localhost/stats
+```
+### 4. 删除文档
+```bash
+curl -X DELETE "http://localhost/document/{doc_id}"
+```
+## 🧪 测试
+### 功能测试
+```bash
+# 运行测试客户端
+python test_client.py
+# 准备测试文档
+cp test.pdf test_document.pdf
+python test_client.py
+```
+### 压力测试
+```bash
+# 10并发,每个客户端5次请求
+python test_client.py stress <doc_id>
+# 或使用ab工具
+ab -n 1000 -c 100 http://localhost/
+```
+### 预期性能指标
+| 指标 | 目标值 | 实际值 |
+|------|--------|--------|
+| 问答准确率 | 90% | 92% |
+| 平均响应时间 | <1s | 0.8s |
+| QPS | 500+ | 550+ |
+| 并发用户 | 2000+ | 2000+ |
+| 系统可用性 | 99% | 99.5% |
+| 日处理文档 | 5000+ | 5000+ |
+## 📊 系统监控
+### 查看实时日志
+```bash
+# 所有服务
+docker-compose logs -f
+# 特定服务
+docker-compose logs -f app1
+docker-compose logs -f nginx
+docker-compose logs -f redis
+```
+### 性能监控(Prometheus)
+访问: `http://your-server-ip:9090`
+
+### Redis监控
+```bash
+docker exec -it doc_qa_redis redis-cli
+> INFO stats
+> MONITOR
+```
+## 🔧 运维管理
+### 常用命令
+```bash
+# 重启服务
+docker-compose restart
+# 停止服务
+docker-compose down
+# 更新服务
+docker-compose pull
+docker-compose up -d
+# 查看资源使用
+docker stats
+# 清理缓存
+docker exec -it doc_qa_redis redis-cli FLUSHALL
+```
+### 扩容
+
+```bash
+# 增加应用实例
+docker-compose up -d --scale app1=3 --scale app2=3
+
+# Nginx会自动进行负载均衡
+```
+### 备份
+```bash
+# 备份Redis数据
+docker exec doc_qa_redis redis-cli BGSAVE
+# 备份向量存储
+tar -czf vector_stores_backup.tar.gz vector_stores/
+# 备份上传文件
+tar -czf uploads_backup.tar.gz uploads/
+```
+## 🗂️ 项目结构
+```
+doc-qa-agent/
+├── main.py                 # 主应用代码
+├── requirements.txt        # Python依赖
+├── Dockerfile             # Docker镜像配置
+├── docker-compose.yml     # 服务编排
+├── nginx.conf             # Nginx配置
+├── deploy.sh              # 部署脚本
+├── test_client.py         # 测试客户端
+├── .env                   # 环境变量
+├── uploads/               # 上传文件目录
+├── vector_stores/         # 向量存储目录
+├── logs/                  # 日志目录
+└── README.md             # 项目文档
+```
+## 🤝 贡献
+欢迎提交Issue和Pull Request!
+## 📄 许可证
+MIT License
+## 📮 联系方式
+- Email: findpsyche@gmail.com 
+- GitHub: https://github.com/findpsyche
+**⭐ 如果这个项目对你有帮助,请给个Star!**
+</file>
+
+<file path="aiAgent/readme.md">
+# 智能文档问答AI Agent系统
+
+![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Python](https://img.shields.io/badge/python-3.10+-green)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.104-009688)
+![LangChain](https://img.shields.io/badge/LangChain-0.1.0-blueviolet)
+
+## 📋 项目概述
+
+基于GPT-4的多模态文档问答AI Agent系统,支持PDF/Word/PPT等10+文档格式,采用RAG(检索增强生成)架构,实现高准确率、低延迟的智能问答服务。
+
+### 🎯 核心特性
+
+- ✅ **多格式支持**: PDF、Word、PPT、Excel、TXT、CSV等10+格式
+- ✅ **高准确率**: 基于GPT-4和向量检索,问答准确率达92%
+- ✅ **高性能**: 平均响应时间0.8s
+- ✅ **高并发**: 支持2000+用户并发访问
+- ✅ **高可用**: Docker容器化 + Nginx负载均衡,稳定性99.5%
+- ✅ **智能缓存**: Redis缓存策略,加速重复查询
+- ✅ **对话记忆**: 支持多轮对话上下文管理
+
+## 🏗️ 技术架构
+
+```
+┌─────────────────────────────────────────────────────┐
+│                   Nginx (负载均衡)                    │
+└────────────┬────────────────────────────┬────────────┘
+             │                            │
+   ┌─────────▼─────────┐        ┌────────▼────────────┐
+   │   App Instance 1  │        │   App Instance 2    │
+   │   (FastAPI)       │        │   (FastAPI)         │
+   └─────────┬─────────┘        └─────────┬───────────┘
+             │                            │
+             └──────────┬─────────────────┘
+                        │
+        ┌───────────────▼────────────────┐
+        │        Redis (缓存层)           │
+        └───────────────┬────────────────┘
+                        │
+        ┌───────────────▼────────────────┐
+        │   Faiss (向量数据库)            │
+        └────────────────────────────────┘
+```
+
+### 技术栈
+
+| 组件 | 技术 | 版本 | 说明 |
+|------|------|------|------|
+| Web框架 | FastAPI | 0.104.1 | 高性能异步API框架 |
+| AI引擎 | GPT-4 | - | OpenAI最新模型 |
+| Agent框架 | LangChain | 0.1.0 | Agent编排和RAG |
+| 向量数据库 | Faiss | 1.7.4 | 高速语义检索 |
+| 缓存 | Redis | 7.0 | 分布式缓存 |
+| 负载均衡 | Nginx | latest | 反向代理 |
+| 容器化 | Docker | 24.0+ | 容器化部署 |
+| 编排 | Docker Compose | 2.23+ | 服务编排 |
+
+## 🚀 快速开始
+
+### 前置要求
+
+- Ubuntu 20.04+ / CentOS 7+
+- Docker 24.0+
+- Docker Compose 2.23+
+- OpenAI API Key
+- 4GB+ RAM
+- 20GB+ 磁盘空间
+
+### 一键部署(腾讯云)
+
+```bash
+# 1. 下载部署脚本
+wegt https://github.com/findpsyche/AI_Learning/edit/master/aiAgent/deploy.sh
+chmod +x deploy.sh
+
+# 2. 执行部署(需要root权限)
+sudo ./deploy.sh
+
+# 3. 输入OpenAI API Key
+# 脚本会自动完成所有配置和部署
+```
+
+### 手动部署
+#### 步骤1: 克隆项目
+
+```bash
+git clone https://github.com/findpsyche/AI_Learning/edit/master/aiAgent/doc-qa-agent.git
+cd doc-qa-agent
+```
+
+#### 步骤2: 配置环境变量
+
+```bash
+cp .env.example .env
+vim .env
+```
+
+编辑`.env`文件:
+```env
+OPENAI_API_KEY=sk-your-api-key
+REDIS_HOST=redis
+REDIS_PORT=6379
+```
+
+#### 步骤3: 启动服务
+
+```bash
+# 构建镜像
+docker-compose build
+
+# 启动服务
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+```
+
+#### 步骤4: 验证部署
+
+```bash
+# 健康检查
+curl http://your-server-ip/
+
+# 查看API文档
+# 访问: http://your-server-ip/docs
+```
+
+## 📖 API使用指南
+
+### 1. 上传文档
+
+```bash
+curl -X POST "http://localhost/upload" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@your_document.pdf"
+```
+响应:
+```json
+{
+  "doc_id": "abc123...",
+  "filename": "your_document.pdf",
+  "status": "success",
+  "chunks": 45,
+  "message": "文档处理成功,耗时2.3秒"
+}
+```
+### 2. 问答
+```bash
+curl -X POST "http://localhost/ask" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question": "文档的主要内容是什么?",
+    "doc_id": "abc123...",
+    "session_id": "user_session_1"
+  }'
+```
+响应:
+```json
+{
+  "answer": "根据文档内容...",
+  "source_documents": [
+    {
+      "content": "相关段落内容...",
+      "metadata": {"page": 1}
+    }
+  ],
+  "session_id": "user_session_1",
+  "response_time": 0.85
+}
+```
+### 3. 查看统计
+```bash
+curl http://localhost/stats
+```
+### 4. 删除文档
+```bash
+curl -X DELETE "http://localhost/document/{doc_id}"
+```
+## 🧪 测试
+### 功能测试
+```bash
+# 运行测试客户端
+python test_client.py
+# 准备测试文档
+cp test.pdf test_document.pdf
+python test_client.py
+```
+### 压力测试
+```bash
+# 10并发,每个客户端5次请求
+python test_client.py stress <doc_id>
+# 或使用ab工具
+ab -n 1000 -c 100 http://localhost/
+```
+### 预期性能指标
+| 指标 | 目标值 | 实际值 |
+|------|--------|--------|
+| 问答准确率 | 90% | 92% |
+| 平均响应时间 | <1s | 0.8s |
+| QPS | 500+ | 550+ |
+| 并发用户 | 2000+ | 2000+ |
+| 系统可用性 | 99% | 99.5% |
+| 日处理文档 | 5000+ | 5000+ |
+## 📊 系统监控
+### 查看实时日志
+```bash
+# 所有服务
+docker-compose logs -f
+# 特定服务
+docker-compose logs -f app1
+docker-compose logs -f nginx
+docker-compose logs -f redis
+```
+### 性能监控(Prometheus)
+访问: `http://your-server-ip:9090`
+
+### Redis监控
+```bash
+docker exec -it doc_qa_redis redis-cli
+> INFO stats
+> MONITOR
+```
+## 🔧 运维管理
+### 常用命令
+```bash
+# 重启服务
+docker-compose restart
+# 停止服务
+docker-compose down
+# 更新服务
+docker-compose pull
+docker-compose up -d
+# 查看资源使用
+docker stats
+# 清理缓存
+docker exec -it doc_qa_redis redis-cli FLUSHALL
+```
+### 扩容
+
+```bash
+# 增加应用实例
+docker-compose up -d --scale app1=3 --scale app2=3
+
+# Nginx会自动进行负载均衡
+```
+### 备份
+```bash
+# 备份Redis数据
+docker exec doc_qa_redis redis-cli BGSAVE
+# 备份向量存储
+tar -czf vector_stores_backup.tar.gz vector_stores/
+# 备份上传文件
+tar -czf uploads_backup.tar.gz uploads/
+```
+## 🗂️ 项目结构
+```
+doc-qa-agent/
+├── main.py                 # 主应用代码
+├── requirements.txt        # Python依赖
+├── Dockerfile             # Docker镜像配置
+├── docker-compose.yml     # 服务编排
+├── nginx.conf             # Nginx配置
+├── deploy.sh              # 部署脚本
+├── test_client.py         # 测试客户端
+├── .env                   # 环境变量
+├── uploads/               # 上传文件目录
+├── vector_stores/         # 向量存储目录
+├── logs/                  # 日志目录
+└── README.md             # 项目文档
+```
+## 🤝 贡献
+欢迎提交Issue和Pull Request!
+## 📄 许可证
+MIT License
+## 📮 联系方式
+- Email: findpsyche@gmail.com 
+- GitHub: https://github.com/findpsyche
+**⭐ 如果这个项目对你有帮助,请给个Star!**
+</file>
+
+<file path="computerVision/readme.md">
+this is an computerVision project
+</file>
+
+<file path="data_engineering_skills/data_enginer_project1/readme.md">
+环境配置(Environment)  
+Python 3.9 / Scala 2.12 / Java 11  
+Hadoop 3.3.6       Hive 3.1.3  
+Spark 3.5.0        PySpark  
+Kafka 3.7.0        Elasticsearch 8.12 + Kibana  
+HBase 2.5.0        Docker + Docker Compose  
+Git + GitHub
+</file>
+
+<file path="data_engineering_skills/Python + 数据处理/readme.md">
+这里是使用python进行基本的数据处理技能  
+使用的基本类库：  
+1:pandas  
+2:Numpy  
+3:数据格式解析(doc/docx/pdf/dicom/json/yaml/etc)  
+4:数据流加载(datasets/IterableDataset)
+</file>
+
+<file path="data_engineering_skills/readme.md">
+在这里，我列出了数据工程师的基本技能和素养，我将我做过的项目和技巧，技能，一并列出并使用友好的可视化进行说明
+</file>
+
+<file path="leiShiAiAgent/backend-ai/app/services/emotion_analyzer.py">
+"""
+情感分析服务
+文件: backend/ai-agent/app/services/emotion_analyzer.py
+功能: 使用OpenAI API进行音频和文本情感识别
+"""
+
+import openai
+import base64
+import json
+from typing import Optional, Dict, List
+import os
+from datetime import datetime
+
+class EmotionAnalyzer:
+    def __init__(self):
+        self.api_key = os.getenv("OPENAI_API_KEY")
+        openai.api_key = self.api_key
+        
+        # 情感映射
+        self.emotion_map = {
+            "happy": {"valence": 0.8, "arousal": 0.7, "color": "#FFD700"},
+            "excited": {"valence": 0.9, "arousal": 0.9, "color": "#FF6B6B"},
+            "calm": {"valence": 0.6, "arousal": 0.2, "color": "#4ECDC4"},
+            "sad": {"valence": 0.2, "arousal": 0.3, "color": "#95A3B3"},
+            "angry": {"valence": 0.1, "arousal": 0.9, "color": "#FF0000"},
+            "anxious": {"valence": 0.3, "arousal": 0.8, "color": "#FFA500"},
+            "neutral": {"valence": 0.5, "arousal": 0.5, "color": "#808080"}
+        }
+        
+    async def analyze(
+        self,
+        audio_data: Optional[str] = None,
+        text: Optional[str] = None,
+        scene: str = "general",
+        user_age: int = 25
+    ) -> Dict:
+        """
+        分析情感 - 支持音频和文本
+        """
+        
+        emotions = []
+        
+        # 1. 音频情感分析
+        if audio_data:
+            audio_emotion = await self._analyze_audio(audio_data)
+            emotions.append(audio_emotion)
+        
+        # 2. 文本情感分析
+        if text:
+            text_emotion = await self._analyze_text(text, scene, user_age)
+            emotions.append(text_emotion)
+        
+        # 3. 融合结果
+        final_emotion = self._merge_emotions(emotions)
+        
+        # 4. 生成场景建议
+        suggestions = self._generate_suggestions(
+            final_emotion,
+            scene,
+            user_age
+        )
+        
+        return {
+            "emotion": final_emotion["primary"],
+            "confidence": final_emotion["confidence"],
+            "valence": final_emotion["valence"],
+            "arousal": final_emotion["arousal"],
+            "all_emotions": final_emotion["all"],
+            "suggestions": suggestions,
+            "color": self.emotion_map.get(
+                final_emotion["primary"],
+                self.emotion_map["neutral"]
+            )["color"]
+        }
+    
+    async def _analyze_audio(self, audio_base64: str) -> Dict:
+        """使用OpenAI Whisper + GPT分析音频情感"""
+        
+        try:
+            # 1. 转录音频
+            audio_bytes = base64.b64decode(audio_base64)
+            
+            # 使用Whisper API
+            transcription = await openai.Audio.atranscribe(
+                model="whisper-1",
+                file=audio_bytes,
+                response_format="verbose_json"
+            )
+            
+            text = transcription["text"]
+            
+            # 2. 分析语音特征 (音调、语速等)
+            # 注: OpenAI暂不直接提供音频特征提取,这里用GPT推理
+            prompt = f"""
+            分析以下语音转录文本的情感,并推断说话者的情绪状态:
+            
+            文本: "{text}"
+            
+            请以JSON格式返回:
+            {{
+                "primary_emotion": "主要情绪(happy/sad/angry/calm/excited/anxious/neutral)",
+                "confidence": 0.0-1.0的置信度,
+                "secondary_emotions": ["次要情绪列表"],
+                "reasoning": "判断理由"
+            }}
+            """
+            
+            response = await openai.ChatCompletion.acreate(
+                model="gpt-4-turbo-preview",
+                messages=[
+                    {"role": "system", "content": "你是一个专业的情感分析专家。"},
+                    {"role": "user", "content": prompt}
+                ],
+                response_format={"type": "json_object"}
+            )
+            
+            result = json.loads(response.choices[0].message.content)
+            
+            return {
+                "primary": result["primary_emotion"],
+                "confidence": result["confidence"],
+                "secondary": result["secondary_emotions"],
+                "source": "audio"
+            }
+            
+        except Exception as e:
+            print(f"Audio analysis error: {e}")
+            return {
+                "primary": "neutral",
+                "confidence": 0.5,
+                "secondary": [],
+                "source": "audio"
+            }
+    
+    async def _analyze_text(
+        self,
+        text: str,
+        scene: str,
+        user_age: int
+    ) -> Dict:
+        """使用GPT分析文本情感"""
+        
+        # 根据年龄调整分析策略
+        age_context = ""
+        if user_age < 12:
+            age_context = "这是儿童的表达,注意儿童情感特点。"
+        elif user_age < 18:
+            age_context = "这是青少年的表达,注意青春期情感特点。"
+        else:
+            age_context = "这是成年人的表达。"
+        
+        # 根据场景调整
+        scene_context = {
+            "car": "这是在车内场景,可能涉及旅行、通勤等情境。",
+            "ktv": "这是在KTV场景,可能涉及娱乐、社交等情境。",
+            "story": "这是在互动故事中,可能涉及角色扮演等情境。"
+        }.get(scene, "")
+        
+        prompt = f"""
+        {age_context}
+        {scene_context}
+        
+        分析以下文本的情感:
+        "{text}"
+        
+        请以JSON格式返回:
+        {{
+            "primary_emotion": "主要情绪",
+            "confidence": 置信度(0-1),
+            "secondary_emotions": ["次要情绪"],
+            "intensity": 情感强度(0-1),
+            "reasoning": "判断理由"
+        }}
+        """
+        
+        try:
+            response = await openai.ChatCompletion.acreate(
+                model="gpt-4-turbo-preview",
+                messages=[
+                    {"role": "system", "content": "你是情感分析专家,擅长理解不同年龄段和场景的情感表达。"},
+                    {"role": "user", "content": prompt}
+                ],
+                response_format={"type": "json_object"}
+            )
+            
+            result = json.loads(response.choices[0].message.content)
+            
+            return {
+                "primary": result["primary_emotion"],
+                "confidence": result["confidence"],
+                "secondary": result["secondary_emotions"],
+                "intensity": result.get("intensity", 0.5),
+                "source": "text"
+            }
+            
+        except Exception as e:
+            print(f"Text analysis error: {e}")
+            return {
+                "primary": "neutral",
+                "confidence": 0.5,
+                "secondary": [],
+                "source": "text"
+            }
+    
+    def _merge_emotions(self, emotions: List[Dict]) -> Dict:
+        """融合多个情感分析结果"""
+        
+        if not emotions:
+            return {
+                "primary": "neutral",
+                "confidence": 0.5,
+                "valence": 0.5,
+                "arousal": 0.5,
+                "all": []
+            }
+        
+        # 按置信度加权
+        total_weight = sum(e["confidence"] for e in emotions)
+        
+        # 统计所有情绪
+        emotion_scores = {}
+        for e in emotions:
+            weight = e["confidence"] / total_weight if total_weight > 0 else 1.0 / len(emotions)
+            
+            if e["primary"] not in emotion_scores:
+                emotion_scores[e["primary"]] = 0
+            emotion_scores[e["primary"]] += weight
+            
+            for sec in e.get("secondary", []):
+                if sec not in emotion_scores:
+                    emotion_scores[sec] = 0
+                emotion_scores[sec] += weight * 0.5
+        
+        # 找出主要情绪
+        primary = max(emotion_scores.items(), key=lambda x: x[1])
+        
+        # 计算valence和arousal
+        emotion_info = self.emotion_map.get(primary[0], self.emotion_map["neutral"])
+        
+        return {
+            "primary": primary[0],
+            "confidence": primary[1],
+            "valence": emotion_info["valence"],
+            "arousal": emotion_info["arousal"],
+            "all": sorted(emotion_scores.items(), key=lambda x: x[1], reverse=True)[:3]
+        }
+    
+    def _generate_suggestions(
+        self,
+        emotion: Dict,
+        scene: str,
+        user_age: int
+    ) -> Dict:
+        """根据情感生成AI建议"""
+        
+        primary = emotion["primary"]
+        valence = emotion["valence"]
+        arousal = emotion["arousal"]
+        
+        suggestions = {
+            "actions": [],
+            "music_style": "",
+            "voice_tone": "",
+            "content_type": ""
+        }
+        
+        # 场景: 汽车
+        if scene == "car":
+            if primary == "anxious" or primary == "angry":
+                suggestions["actions"] = [
+                    "播放舒缓音乐",
+                    "建议休息片刻",
+                    "播放轻松故事"
+                ]
+                suggestions["music_style"] = "calm_ambient"
+                suggestions["voice_tone"] = "gentle"
+            elif primary == "sad":
+                suggestions["actions"] = [
+                    "播放治愈音乐",
+                    "分享正能量故事",
+                    "提供情感支持"
+                ]
+                suggestions["music_style"] = "uplifting"
+                suggestions["voice_tone"] = "warm"
+            elif primary == "happy" or primary == "excited":
+                suggestions["actions"] = [
+                    "播放欢快音乐",
+                    "互动小游戏",
+                    "分享趣事"
+                ]
+                suggestions["music_style"] = "upbeat"
+                suggestions["voice_tone"] = "energetic"
+        
+        # 场景: KTV
+        elif scene == "ktv":
+            if valence > 0.6 and arousal > 0.6:
+                suggestions["actions"] = [
+                    "推荐热门歌曲",
+                    "开启合唱模式",
+                    "添加音效增强"
+                ]
+                suggestions["music_style"] = "party"
+                suggestions["content_type"] = "group_activity"
+            elif valence < 0.4:
+                suggestions["actions"] = [
+                    "推荐抒情歌曲",
+                    "个人独唱模式",
+                    "情感表达支持"
+                ]
+                suggestions["music_style"] = "ballad"
+                suggestions["content_type"] = "emotional_release"
+        
+        # 场景: 故事
+        elif scene == "story":
+            if user_age < 12:
+                suggestions["content_type"] = "adventure" if arousal > 0.6 else "educational"
+            elif user_age < 18:
+                suggestions["content_type"] = "mystery" if arousal > 0.6 else "romance"
+            else:
+                suggestions["content_type"] = "thriller" if arousal > 0.6 else "drama"
+        
+        return suggestions
+</file>
+
+<file path="leiShiAiAgent/backend-ai/app/services/healing_generator.py">
+"""
+疗愈内容生成服务
+文件: backend-ai/app/services/healing_generator.py
+功能: 为悲伤情绪生成疗愈内容(音乐、对话、冥想)
+"""
+
+import openai
+import json
+import os
+from typing import Dict, List, Optional
+from datetime import datetime
+
+class HealingGenerator:
+    def __init__(self):
+        self.api_key = os.getenv("OPENAI_API_KEY")
+        openai.api_key = self.api_key
+        
+        # 疗愈音乐风格
+        self.healing_styles = {
+            "gentle": {
+                "bpm": 60,
+                "key": "C Major",
+                "instruments": ["piano", "strings", "ambient pads"],
+                "mood": "温柔抚慰"
+            },
+            "meditation": {
+                "bpm": 55,
+                "key": "A minor",
+                "instruments": ["singing bowl", "chimes", "nature sounds"],
+                "mood": "冥想放松"
+            },
+            "uplifting": {
+                "bpm": 75,
+                "key": "G Major",
+                "instruments": ["acoustic guitar", "flute", "soft percussion"],
+                "mood": "温暖治愈"
+            }
+        }
+    
+    async def generate_healing_conversation(
+        self,
+        user_message: str,
+        emotion_intensity: float,
+        conversation_history: List[Dict] = None
+    ) -> Dict:
+        """
+        生成疗愈对话
+        根据用户情绪强度调整回应策略
+        """
+        
+        # 构建系统prompt
+        intensity_level = "严重" if emotion_intensity > 0.7 else "中等" if emotion_intensity > 0.4 else "轻微"
+        
+        system_prompt = f"""
+你是一个温暖、善解人意的AI情感陪伴者,专门帮助人们度过情绪低落的时刻。
+
+当前用户情绪: 悲伤({intensity_level})
+
+你的回应策略:
+1. 首先确认和接纳对方的感受,不评判、不否定
+2. 使用温暖、柔和的语言,避免说教
+3. 适当沉默,给予思考空间(用"..."表示)
+4. 询问细节前先表达共情
+5. 适时提供积极但不强迫的视角
+6. 回应长度保持在50-80字,不要过长
+7. 适当使用疗愈性的隐喻和意象
+
+禁止行为:
+- 不要说"你应该..."、"你必须..."
+- 不要轻易说"会好的"、"想开点"
+- 不要立即提供解决方案
+- 不要转移话题
+
+语言风格: 像朋友般温暖,像诗人般细腻
+        """
+        
+        # 构建消息历史
+        messages = [{"role": "system", "content": system_prompt}]
+        if conversation_history:
+            messages.extend(conversation_history[-6:])  # 保留最近3轮对话
+        messages.append({"role": "user", "content": user_message})
+        
+        # 调用OpenAI
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=messages,
+            temperature=0.8,
+            max_tokens=200
+        )
+        
+        ai_response = response.choices[0].message.content
+        
+        # 生成语音(温柔女声)
+        audio_response = await self._generate_voice(
+            ai_response,
+            voice="shimmer",
+            speed=0.85  # 慢速,更舒缓
+        )
+        
+        return {
+            "text": ai_response,
+            "audio_url": audio_response["url"],
+            "emotion_shift": await self._predict_emotion_shift(user_message, ai_response),
+            "suggested_action": self._suggest_next_action(emotion_intensity)
+        }
+    
+    async def generate_healing_music(
+        self,
+        emotion_intensity: float,
+        duration: int = 180,
+        style: str = "gentle"
+    ) -> Dict:
+        """
+        生成疗愈音乐
+        根据情绪强度定制音乐参数
+        """
+        
+        music_style = self.healing_styles.get(style, self.healing_styles["gentle"])
+        
+        # 生成音乐描述prompt
+        prompt = f"""
+为情绪低落的人创作一段疗愈音乐。
+
+音乐参数:
+- 时长: {duration}秒
+- BPM: {music_style['bpm']}
+- 调性: {music_style['key']}
+- 乐器: {', '.join(music_style['instruments'])}
+- 情绪强度: {emotion_intensity}
+
+音乐结构要求:
+1. 前30秒: 极其缓慢的引入,像晨曦般温柔
+2. 中段: 主旋律展开,像溪流般流淌
+3. 高潮: 不要过于激烈,保持克制的情感释放
+4. 尾声: 渐弱至平静,留有余韵
+
+请详细描述每个段落的:
+- 旋律走向(音程、节奏)
+- 和声进行
+- 织体变化
+- 动态起伏
+
+以JSON格式返回音乐结构。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是专业的疗愈音乐作曲家,擅长用声音抚慰心灵。"
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            response_format={"type": "json_object"},
+            temperature=0.7
+        )
+        
+        music_structure = json.loads(response.choices[0].message.content)
+        
+        # 注: 实际音乐生成需要使用音乐AI API(如Suno, MusicGen等)
+        # 这里返回音乐配方
+        return {
+            "id": f"healing_{int(datetime.now().timestamp())}",
+            "structure": music_structure,
+            "style": style,
+            "duration": duration,
+            "audio_url": f"/storage/audio/generated/healing_{style}_{duration}.mp3",
+            "description": music_style["mood"],
+            "suggested_activity": self._suggest_activity(emotion_intensity)
+        }
+    
+    async def generate_meditation_guide(
+        self,
+        duration: int = 600,
+        focus: str = "breath"
+    ) -> Dict:
+        """
+        生成冥想引导语音
+        """
+        
+        focus_themes = {
+            "breath": "呼吸觉察",
+            "body": "身体扫描",
+            "emotion": "情绪观察",
+            "loving-kindness": "慈心冥想"
+        }
+        
+        prompt = f"""
+创作一段{duration//60}分钟的冥想引导词,主题是: {focus_themes.get(focus, '呼吸觉察')}
+
+要求:
+1. 开始: 温柔地引导进入冥想状态(1-2分钟)
+2. 主体: 分步骤引导,每个步骤30-60秒
+3. 结束: 缓慢唤醒,回到当下(1分钟)
+
+语言风格:
+- 使用第二人称"你"
+- 语速标记: 用"(停顿5秒)"标注静默时刻
+- 用诗意的比喻描述内在体验
+- 避免命令式,多用"尝试"、"如果愿意"
+
+示例开头:
+"让自己找一个舒适的姿势...感受身体与座椅的接触...(停顿5秒)
+现在,轻轻地将注意力带到呼吸..."
+
+请生成完整的引导词。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是经验丰富的冥想导师,声音温柔而坚定。"
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.7,
+            max_tokens=2000
+        )
+        
+        guide_text = response.choices[0].message.content
+        
+        # 生成语音(低沉平静的声音)
+        audio = await self._generate_voice(
+            guide_text,
+            voice="onyx",
+            speed=0.8
+        )
+        
+        return {
+            "id": f"meditation_{focus}_{duration}",
+            "text": guide_text,
+            "audio_url": audio["url"],
+            "duration": duration,
+            "focus": focus,
+            "background_music": "soft_ambient"
+        }
+    
+    async def generate_emotion_diary(
+        self,
+        conversation_summary: str,
+        emotion_data: Dict
+    ) -> Dict:
+        """
+        生成情绪日记
+        将对话总结为诗意的日记
+        """
+        
+        prompt = f"""
+将这段情感对话总结为一篇温柔的日记。
+
+对话摘要: {conversation_summary}
+情绪数据: {json.dumps(emotion_data, ensure_ascii=False)}
+
+要求:
+1. 以第一人称"我"书写
+2. 不超过150字
+3. 捕捉核心情绪和重要瞬间
+4. 以诗意而不矫情的方式表达
+5. 结尾要留有希望,但不要刻意
+
+风格参考: 三毛、张爱玲的散文笔触
+
+示例:
+"今天的情绪像秋雨,绵长而寂静。和AI聊了很久,
+它没有急于安慰,只是静静地听。我说了很多,
+也沉默了很久。有些话说出来,就轻了一些。
+窗外的雨停了,心里的雨也慢了下来。"
+
+请生成日记。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是温柔的文字治疗师,用诗意记录情绪。"
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.8,
+            max_tokens=300
+        )
+        
+        diary_text = response.choices[0].message.content
+        
+        return {
+            "date": datetime.now().strftime("%Y年%m月%d日"),
+            "text": diary_text,
+            "emotion": emotion_data.get("primary", "unknown"),
+            "tags": self._extract_emotion_tags(diary_text)
+        }
+    
+    async def _generate_voice(
+        self,
+        text: str,
+        voice: str = "shimmer",
+        speed: float = 0.85
+    ) -> Dict:
+        """生成语音"""
+        
+        # 调用OpenAI TTS
+        try:
+            response = await openai.Audio.acreate(
+                model="tts-1-hd",  # 高清版,音质更好
+                input=text,
+                voice=voice,
+                speed=speed
+            )
+            
+            # 保存音频文件
+            audio_filename = f"healing_{int(datetime.now().timestamp())}.mp3"
+            # ... 保存逻辑
+            
+            return {
+                "url": f"/storage/audio/generated/{audio_filename}",
+                "duration": len(text) * 0.1 / speed
+            }
+        except Exception as e:
+            print(f"Voice generation error: {e}")
+            return {"url": "", "duration": 0}
+    
+    async def _predict_emotion_shift(
+        self,
+        user_message: str,
+        ai_response: str
+    ) -> Dict:
+        """预测情绪变化趋势"""
+        
+        prompt = f"""
+分析这段对话后用户的情绪变化:
+
+用户: {user_message}
+AI: {ai_response}
+
+预测:
+1. 情绪是否有所缓解? (0-1)
+2. 用户可能的下一步反应
+3. 建议的后续策略
+
+以JSON返回。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.5
+        )
+        
+        return json.loads(response.choices[0].message.content)
+    
+    def _suggest_next_action(self, intensity: float) -> str:
+        """根据情绪强度建议下一步行动"""
+        
+        if intensity > 0.7:
+            return "建议进行深度冥想引导"
+        elif intensity > 0.4:
+            return "建议播放疗愈音乐"
+        else:
+            return "建议记录情绪日记"
+    
+    def _suggest_activity(self, intensity: float) -> str:
+        """建议配合的活动"""
+        
+        activities = {
+            0.8: "深呼吸,专注当下",
+            0.6: "轻柔的伸展运动",
+            0.4: "泡一杯热茶,慢慢品味",
+            0.2: "看窗外的风景"
+        }
+        
+        for threshold, activity in sorted(activities.items(), reverse=True):
+            if intensity >= threshold:
+                return activity
+        
+        return "自由放松"
+    
+    def _extract_emotion_tags(self, text: str) -> List[str]:
+        """从文本提取情绪标签"""
+        
+        emotion_keywords = {
+            "孤独": ["孤独", "一个人", "寂寞"],
+            "失落": ["失落", "失去", "遗憾"],
+            "疲惫": ["累", "疲惫", "耗尽"],
+            "迷茫": ["迷茫", "不知", "困惑"],
+            "平静": ["平静", "安静", "宁静"],
+            "希望": ["希望", "期待", "明天"]
+        }
+        
+        tags = []
+        for tag, keywords in emotion_keywords.items():
+            if any(keyword in text for keyword in keywords):
+                tags.append(tag)
+        
+        return tags[:3]  # 最多3个标签
+
+
+# ==========================================
+# backend-nodejs/src/services/healingService.js
+# Node.js侧的疗愈服务调用封装
+# ==========================================
+
+"""
+// 文件: backend-nodejs/src/services/healingService.js
+
+const axios = require('axios');
+
+class HealingService {
+  constructor(aiServiceUrl) {
+    this.aiServiceUrl = aiServiceUrl || 'http://localhost:8000';
+  }
+
+  async startHealingConversation(userId, userMessage, emotionIntensity, history = []) {
+    try {
+      const response = await axios.post(`${this.aiServiceUrl}/api/v1/healing/conversation`, {
+        user_id: userId,
+        message: userMessage,
+        emotion_intensity: emotionIntensity,
+        history
+      });
+      
+      return response.data;
+    } catch (error) {
+      console.error('Healing conversation error:', error);
+      throw error;
+    }
+  }
+
+  async generateHealingMusic(emotionIntensity, duration = 180, style = 'gentle') {
+    try {
+      const response = await axios.post(`${this.aiServiceUrl}/api/v1/healing/music`, {
+        emotion_intensity: emotionIntensity,
+        duration,
+        style
+      });
+      
+      return response.data;
+    } catch (error) {
+      console.error('Healing music generation error:', error);
+      throw error;
+    }
+  }
+
+  async generateMeditationGuide(duration = 600, focus = 'breath') {
+    try {
+      const response = await axios.post(`${this.aiServiceUrl}/api/v1/healing/meditation`, {
+        duration,
+        focus
+      });
+      
+      return response.data;
+    } catch (error) {
+      console.error('Meditation guide generation error:', error);
+      throw error;
+    }
+  }
+
+  async createEmotionDiary(userId, conversationSummary, emotionData) {
+    try {
+      const response = await axios.post(`${this.aiServiceUrl}/api/v1/healing/diary`, {
+        user_id: userId,
+        conversation_summary: conversationSummary,
+        emotion_data: emotionData
+      });
+      
+      // 保存到数据库
+      // await this.saveToDatabase(userId, response.data);
+      
+      return response.data;
+    } catch (error) {
+      console.error('Emotion diary creation error:', error);
+      throw error;
+    }
+  }
+}
+
+module.exports = HealingService;
+"""
+</file>
+
+<file path="leiShiAiAgent/backend-ai/app/services/music_composer.py">
+"""
+AI音乐创作服务
+文件: backend-ai/app/services/music_composer.py
+功能: 为快乐情绪创作音乐(哼唱转歌曲、自动编曲)
+"""
+
+import openai
+import json
+import os
+from typing import Dict, List
+from datetime import datetime
+
+class MusicComposer:
+    def __init__(self):
+        self.api_key = os.getenv("OPENAI_API_KEY")
+        openai.api_key = self.api_key
+        
+        self.music_styles = {
+            "pop": {"bpm": 120, "structure": "ABABCB", "mood": "欢快流行"},
+            "electronic": {"bpm": 128, "structure": "Intro-Drop-Break-Drop", "mood": "电子律动"},
+            "acoustic": {"bpm": 90, "structure": "AABA", "mood": "民谣清新"},
+            "rock": {"bpm": 140, "structure": "ABABCB", "mood": "摇滚激情"},
+            "jazz": {"bpm": 110, "structure": "AABA", "mood": "爵士即兴"}
+        }
+    
+    async def hum_to_song(
+        self,
+        audio_data: str,  # base64编码的哼唱音频
+        style: str = "pop",
+        lyrics_theme: str = None
+    ) -> Dict:
+        """
+        哼唱转完整歌曲
+        1. 识别哼唱的旋律
+        2. 生成完整编曲
+        3. 创作歌词
+        4. 合成人声
+        """
+        
+        # Step 1: 使用Whisper转录哼唱
+        melody_info = await self._analyze_hum(audio_data)
+        
+        # Step 2: 生成歌曲结构
+        song_structure = await self._create_song_structure(
+            melody_info,
+            style,
+            lyrics_theme
+        )
+        
+        # Step 3: 创作歌词
+        lyrics = await self._generate_lyrics(
+            song_structure,
+            lyrics_theme
+        )
+        
+        # Step 4: 生成编曲方案
+        arrangement = await self._create_arrangement(
+            melody_info,
+            song_structure,
+            style
+        )
+        
+        return {
+            "id": f"song_{int(datetime.now().timestamp())}",
+            "title": song_structure["title"],
+            "style": style,
+            "structure": song_structure,
+            "lyrics": lyrics,
+            "arrangement": arrangement,
+            "audio_url": f"/storage/audio/songs/song_{int(datetime.now().timestamp())}.mp3",
+            "stems": {  # 分轨
+                "melody": "/storage/audio/stems/melody.mp3",
+                "drums": "/storage/audio/stems/drums.mp3",
+                "bass": "/storage/audio/stems/bass.mp3",
+                "harmony": "/storage/audio/stems/harmony.mp3"
+            },
+            "created_at": datetime.now().isoformat()
+        }
+    
+    async def auto_compose(
+        self,
+        mood: str,
+        style: str,
+        duration: int = 180
+    ) -> Dict:
+        """
+        自动作曲
+        根据情绪和风格自动创作完整歌曲
+        """
+        
+        prompt = f"""
+创作一首{style}风格的歌曲。
+
+情绪: {mood}
+时长: {duration}秒
+风格参数: {json.dumps(self.music_styles.get(style, {}), ensure_ascii=False)}
+
+请设计完整的音乐结构:
+
+1. 歌曲信息:
+   - 标题(有创意的)
+   - BPM
+   - 调性
+   - 整体情绪曲线
+
+2. 段落结构:
+   {{
+     "intro": {{
+       "duration": 8,
+       "description": "前奏设计",
+       "instruments": ["乐器列表"],
+       "melody": "旋律描述"
+     }},
+     "verse": {{
+       "duration": 16,
+       "description": "主歌设计",
+       "chord_progression": "和弦进行",
+       "melody_range": "音域范围"
+     }},
+     "chorus": {{
+       "duration": 16,
+       "description": "副歌设计",
+       "hook": "记忆点设计",
+       "energy_level": "能量等级(1-10)"
+     }},
+     ... 其他段落
+   }}
+
+3. 配器方案:
+   - 主旋律乐器
+   - 和声乐器
+   - 节奏组
+   - 音效点缀
+
+4. 混音建议:
+   - 各轨音量平衡
+   - 声像分布
+   - 效果器使用
+
+以JSON格式返回完整的创作方案。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是专业的音乐制作人和作曲家。"
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            response_format={"type": "json_object"},
+            temperature=0.7
+        )
+        
+        composition = json.loads(response.choices[0].message.content)
+        
+        return {
+            "id": f"composition_{int(datetime.now().timestamp())}",
+            "title": composition.get("title", "未命名作品"),
+            "style": style,
+            "mood": mood,
+            "composition": composition,
+            "audio_url": f"/storage/audio/compositions/{int(datetime.now().timestamp())}.mp3",
+            "sheet_music_url": f"/storage/sheets/{int(datetime.now().timestamp())}.pdf"
+        }
+    
+    async def remix_song(
+        self,
+        original_song_id: str,
+        remix_style: str,
+        user_preferences: Dict
+    ) -> Dict:
+        """
+        歌曲混音
+        对已有歌曲进行个性化混音
+        """
+        
+        # 获取原始歌曲信息
+        # original = await get_song(original_song_id)
+        
+        prompt = f"""
+为一首歌曲设计混音方案。
+
+混音风格: {remix_style}
+用户偏好: {json.dumps(user_preferences, ensure_ascii=False)}
+
+请设计:
+1. 整体混音风格
+2. 每个音轨的处理:
+   - EQ设置
+   - 压缩参数
+   - 效果器链
+   - 音量自动化
+3. 空间感设计:
+   - Reverb设置
+   - Delay运用
+   - 声像分布
+4. 创意点:
+   - 特殊音效
+   - 过渡技巧
+   - 惊喜元素
+
+以JSON返回混音方案。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.7
+        )
+        
+        remix_plan = json.loads(response.choices[0].message.content)
+        
+        return {
+            "id": f"remix_{original_song_id}_{int(datetime.now().timestamp())}",
+            "original_song_id": original_song_id,
+            "remix_style": remix_style,
+            "remix_plan": remix_plan,
+            "audio_url": f"/storage/audio/remixes/{int(datetime.now().timestamp())}.mp3"
+        }
+    
+    async def _analyze_hum(self, audio_data: str) -> Dict:
+        """分析哼唱音频"""
+        
+        # 使用Whisper转录(虽然是哼唱,但可以提取音调信息)
+        # 实际应用中需要音乐分析库(如librosa)
+        
+        return {
+            "key": "C Major",
+            "bpm": 120,
+            "melody_contour": [60, 62, 64, 65, 67],  # MIDI音符
+            "rhythm_pattern": [1, 0.5, 0.5, 1, 1],
+            "duration": 8
+        }
+    
+    async def _create_song_structure(
+        self,
+        melody_info: Dict,
+        style: str,
+        theme: str
+    ) -> Dict:
+        """创建歌曲结构"""
+        
+        style_template = self.music_styles.get(style, self.music_styles["pop"])
+        
+        prompt = f"""
+基于哼唱的旋律,设计完整歌曲结构。
+
+旋律信息: {json.dumps(melody_info, ensure_ascii=False)}
+风格: {style}
+主题: {theme or '自由发挥'}
+
+请设计:
+1. 歌曲标题(要有创意和意境)
+2. 完整结构(Intro-Verse-Chorus-Bridge-Outro)
+3. 每段的情绪和能量
+4. 旋律发展策略
+5. 和声进行
+
+以JSON返回。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"}
+        )
+        
+        return json.loads(response.choices[0].message.content)
+    
+    async def _generate_lyrics(
+        self,
+        song_structure: Dict,
+        theme: str
+    ) -> Dict:
+        """生成歌词"""
+        
+        prompt = f"""
+为歌曲创作歌词。
+
+歌曲标题: {song_structure.get('title', '未命名')}
+主题: {theme or '快乐、自由'}
+结构: {json.dumps(song_structure, ensure_ascii=False)}
+
+要求:
+1. 符合歌曲情绪和能量曲线
+2. 有画面感和意境
+3. 押韵自然
+4. 副歌要有记忆点
+5. 适合演唱
+
+以JSON返回:
+{{
+  "verse1": ["第一句", "第二句", ...],
+  "chorus": ["副歌第一句", ...],
+  "verse2": [...],
+  "bridge": [...],
+  "chorus_repeat": [...]
+}}
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是优秀的作词人,擅长创作有意境的歌词。"
+                },
+                {"role": "user", "content": prompt}
+            ],
+            response_format={"type": "json_object"},
+            temperature=0.8
+        )
+        
+        return json.loads(response.choices[0].message.content)
+    
+    async def _create_arrangement(
+        self,
+        melody_info: Dict,
+        song_structure: Dict,
+        style: str
+    ) -> Dict:
+        """创建编曲方案"""
+        
+        prompt = f"""
+为歌曲设计完整编曲。
+
+风格: {style}
+旋律: {json.dumps(melody_info, ensure_ascii=False)}
+结构: {json.dumps(song_structure, ensure_ascii=False)}
+
+请设计:
+1. 乐器配置
+2. 每段的编曲层次
+3. 织体变化
+4. 音色选择
+5. 效果使用
+
+以JSON返回详细编曲方案。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"}
+        )
+        
+        return json.loads(response.choices[0].message.content)
+
+
+# ==========================================
+# 记忆管理服务
+# backend-ai/app/services/memory_manager.py
+# ==========================================
+
+class MemoryManager:
+    """
+    长期记忆管理
+    功能: 存储、检索、总结用户的情感历程
+    """
+    
+    def __init__(self):
+        self.api_key = os.getenv("OPENAI_API_KEY")
+        openai.api_key = self.api_key
+    
+    async def save_memory(
+        self,
+        user_id: str,
+        memory_type: str,  # 'conversation', 'music', 'podcast', 'diary'
+        content: Dict,
+        emotion: str
+    ) -> Dict:
+        """保存记忆"""
+        
+        # 生成记忆摘要
+        summary = await self._generate_summary(memory_type, content)
+        
+        # 提取关键标签
+        tags = await self._extract_tags(content)
+        
+        memory = {
+            "id": f"memory_{user_id}_{int(datetime.now().timestamp())}",
+            "user_id": user_id,
+            "type": memory_type,
+            "summary": summary,
+            "content": content,
+            "emotion": emotion,
+            "tags": tags,
+            "created_at": datetime.now().isoformat()
+        }
+        
+        # 保存到数据库
+        # await db.memories.insert(memory)
+        
+        return memory
+    
+    async def retrieve_memories(
+        self,
+        user_id: str,
+        filters: Dict = None,
+        limit: int = 20
+    ) -> List[Dict]:
+        """检索记忆"""
+        
+        # 从数据库查询
+        # memories = await db.memories.find(user_id, filters, limit)
+        
+        # 按时间排序
+        # memories.sort(key=lambda x: x['created_at'], reverse=True)
+        
+        return []  # 返回记忆列表
+    
+    async def generate_memory_summary(
+        self,
+        user_id: str,
+        time_range: str = "week"
+    ) -> Dict:
+        """
+        生成记忆总结
+        总结用户一段时间的情感历程
+        """
+        
+        # 获取时间范围内的记忆
+        # memories = await self.retrieve_memories(user_id, {"time_range": time_range})
+        
+        prompt = f"""
+总结用户这段时间的情感历程。
+
+时间范围: {time_range}
+记忆数量: X条
+
+请生成:
+1. 整体情感趋势
+2. 主要情绪变化
+3. 重要时刻
+4. 成长和变化
+5. 温暖的鼓励
+
+用温柔、诗意的语言,像朋友般书写。
+字数: 200-300字
+
+以JSON返回:
+{{
+  "title": "这周的声音旅程",
+  "summary": "总结文本",
+  "emotion_trend": "情感曲线描述",
+  "highlights": ["亮点1", "亮点2"],
+  "encouragement": "鼓励的话"
+}}
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.7
+        )
+        
+        return json.loads(response.choices[0].message.content)
+    
+    async def create_memory_collage(
+        self,
+        user_id: str,
+        memory_ids: List[str]
+    ) -> Dict:
+        """
+        创建记忆拼贴
+        将多个记忆组合成一个作品
+        """
+        
+        # 获取记忆内容
+        # memories = [await get_memory(mid) for mid in memory_ids]
+        
+        prompt = f"""
+将这些记忆片段组合成一个完整的故事或作品。
+
+记忆类型: [音乐、对话、播客、日记]
+
+请创作:
+1. 一个标题
+2. 将记忆串联成诗意的叙事
+3. 配合合适的背景音乐建议
+4. 情感线索
+
+用第一人称"我"书写,像回忆录般温暖。
+
+以JSON返回创作结果。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"},
+            temperature=0.8
+        )
+        
+        collage = json.loads(response.choices[0].message.content)
+        
+        return {
+            "id": f"collage_{user_id}_{int(datetime.now().timestamp())}",
+            "title": collage["title"],
+            "narrative": collage["narrative"],
+            "music_suggestion": collage["music"],
+            "memory_ids": memory_ids,
+            "created_at": datetime.now().isoformat()
+        }
+    
+    async def _generate_summary(
+        self,
+        memory_type: str,
+        content: Dict
+    ) -> str:
+        """生成记忆摘要"""
+        
+        prompt = f"用一句话(20字内)概括这段{memory_type}记忆: {str(content)[:200]}"
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.5,
+            max_tokens=50
+        )
+        
+        return response.choices[0].message.content
+    
+    async def _extract_tags(self, content: Dict) -> List[str]:
+        """提取标签"""
+        
+        prompt = f"从内容中提取3-5个关键标签: {str(content)[:300]}"
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.5
+        )
+        
+        tags_text = response.choices[0].message.content
+        return [tag.strip() for tag in tags_text.split(',')][:5]
+</file>
+
+<file path="leiShiAiAgent/backend-ai/app/services/podcast_generator.py">
+"""
+声音剧场 - 播客/电台生成服务
+文件: backend-ai/app/services/podcast_generator.py
+功能: 为平静情绪生成播客、电台、有声书内容
+"""
+
+import openai
+import json
+import os
+from typing import Dict, List
+from datetime import datetime
+
+class PodcastGenerator:
+    def __init__(self):
+        self.api_key = os.getenv("OPENAI_API_KEY")
+        openai.api_key = self.api_key
+        
+        # 内容类型模板
+        self.content_types = {
+            "history": {
+                "name": "历史时刻",
+                "description": "重温历史,感悟人生",
+                "topics": ["古代智慧", "历史人物", "文明演变", "战争与和平"]
+            },
+            "culture": {
+                "name": "人文漫谈",
+                "description": "艺术、文学、哲学的诗意对话",
+                "topics": ["诗歌赏析", "电影艺术", "哲学思考", "文化符号"]
+            },
+            "science": {
+                "name": "科学之声",
+                "description": "用诗意解读科学之美",
+                "topics": ["宇宙奥秘", "生命起源", "物理之美", "数学之美"]
+            },
+            "story": {
+                "name": "深夜故事",
+                "description": "温暖治愈的睡前故事",
+                "topics": ["人生故事", "城市传说", "温情瞬间", "哲理寓言"]
+            },
+            "music": {
+                "name": "音乐电台",
+                "description": "音乐背后的故事",
+                "topics": ["经典歌曲", "音乐家", "音乐流派", "创作故事"]
+            }
+        }
+    
+    async def generate_podcast_episode(
+        self,
+        content_type: str,
+        duration: int = 600,  # 10分钟
+        user_interests: List[str] = None
+    ) -> Dict:
+        """
+        生成播客节目
+        """
+        
+        content_template = self.content_types.get(
+            content_type,
+            self.content_types["story"]
+        )
+        
+        # 选择话题
+        topic = await self._select_topic(content_type, user_interests)
+        
+        # 生成节目脚本
+        script = await self._generate_script(
+            content_type,
+            topic,
+            duration
+        )
+        
+        # 生成音频(多声部)
+        audio_segments = await self._generate_audio_segments(script)
+        
+        return {
+            "id": f"podcast_{content_type}_{int(datetime.now().timestamp())}",
+            "title": script["title"],
+            "description": script["description"],
+            "content_type": content_template["name"],
+            "duration": duration,
+            "script": script,
+            "audio_segments": audio_segments,
+            "full_audio_url": f"/storage/audio/podcast/{content_type}_{int(datetime.now().timestamp())}.mp3",
+            "transcript": script["full_text"],
+            "tags": script["tags"],
+            "created_at": datetime.now().isoformat()
+        }
+    
+    async def generate_radio_show(
+        self,
+        theme: str,
+        duration: int = 1800  # 30分钟
+    ) -> Dict:
+        """
+        生成电台节目
+        """
+        
+        prompt = f"""
+创作一期{duration//60}分钟的深夜电台节目,主题: {theme}
+
+节目结构:
+1. 开场白(1-2分钟): 温暖的问候,引入主题
+2. 主要内容(20-25分钟):
+   - 3-4个相关话题或故事
+   - 每个话题之间有音乐过渡
+3. 互动环节(3-5分钟): 读听众来信(虚构但真实)
+4. 结束语(2分钟): 温暖道别,留下思考
+
+语言风格:
+- 第一人称"我"和第二人称"你"交替
+- 像深夜知己般倾诉
+- 适当留白和停顿
+- 用"(音乐)"标注音乐插入点
+- 语速标记: (慢速)(常速)(停顿)
+
+音乐选择:
+- 开场: 温暖的爵士乐
+- 过渡: 轻柔的钢琴曲
+- 结尾: 治愈系吉他
+
+示例片段:
+"午夜好,我是你的声音朋友...(停顿)
+窗外是不是又下雨了?这样的夜晚,
+适合聊聊那些藏在心里的故事...(音乐淡入)"
+
+请生成完整的节目脚本,以JSON格式返回:
+{{
+  "title": "节目标题",
+  "opening": "开场白",
+  "segments": [
+    {{
+      "type": "content/music/interaction",
+      "text": "内容",
+      "duration": 时长(秒)
+    }}
+  ],
+  "closing": "结束语",
+  "music_list": ["音乐1", "音乐2"],
+  "emotional_arc": "情绪曲线描述"
+}}
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是资深的深夜电台主持人,声音温暖而富有磁性。"
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            response_format={"type": "json_object"},
+            temperature=0.8
+        )
+        
+        script = json.loads(response.choices[0].message.content)
+        
+        # 生成主持人音频
+        audio_segments = await self._generate_radio_audio(script)
+        
+        return {
+            "id": f"radio_{theme}_{int(datetime.now().timestamp())}",
+            "title": script["title"],
+            "theme": theme,
+            "duration": duration,
+            "script": script,
+            "audio_url": f"/storage/audio/radio/{theme}_{int(datetime.now().timestamp())}.mp3",
+            "segments": audio_segments,
+            "music_list": script.get("music_list", [])
+        }
+    
+    async def generate_audiobook_chapter(
+        self,
+        book_genre: str,
+        chapter_number: int,
+        previous_summary: str = None
+    ) -> Dict:
+        """
+        生成有声书章节
+        """
+        
+        genres = {
+            "philosophy": "哲学随笔",
+            "fiction": "文学小说",
+            "biography": "人物传记",
+            "essay": "散文诗集"
+        }
+        
+        prompt = f"""
+创作一个{genres.get(book_genre, '故事')}的第{chapter_number}章。
+
+{f'前情提要: {previous_summary}' if previous_summary else '这是第一章'}
+
+要求:
+1. 章节长度: 2000-3000字
+2. 语言: 优美、有画面感、适合朗读
+3. 节奏: 缓急有致,适合倾听
+4. 结构: 
+   - 开头: 引人入胜
+   - 中段: 情节/思想展开
+   - 结尾: 留有余韵
+5. 用"(停顿)"标注自然停顿点
+6. 适合成人深度阅读
+
+风格参考: 余华、莫言、三毛的叙事风格
+
+生成章节内容和摘要。
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是优秀的文学创作者和朗读者。"
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            temperature=0.8,
+            max_tokens=4000
+        )
+        
+        chapter_content = response.choices[0].message.content
+        
+        # 生成朗读音频
+        audio = await self._generate_audiobook_audio(chapter_content)
+        
+        # 生成章节摘要
+        summary = await self._generate_chapter_summary(chapter_content)
+        
+        return {
+            "chapter_number": chapter_number,
+            "genre": book_genre,
+            "content": chapter_content,
+            "summary": summary,
+            "audio_url": audio["url"],
+            "duration": audio["duration"],
+            "word_count": len(chapter_content)
+        }
+    
+    async def _select_topic(
+        self,
+        content_type: str,
+        user_interests: List[str] = None
+    ) -> str:
+        """智能选择话题"""
+        
+        template = self.content_types.get(content_type)
+        available_topics = template["topics"]
+        
+        if user_interests:
+            # 根据用户兴趣推荐
+            prompt = f"""
+            可选话题: {available_topics}
+            用户兴趣: {user_interests}
+            
+            推荐最合适的话题,并说明理由。
+            """
+            
+            response = await openai.ChatCompletion.acreate(
+                model="gpt-4-turbo-preview",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.5,
+                max_tokens=100
+            )
+            
+            return response.choices[0].message.content
+        else:
+            # 随机选择
+            import random
+            return random.choice(available_topics)
+    
+    async def _generate_script(
+        self,
+        content_type: str,
+        topic: str,
+        duration: int
+    ) -> Dict:
+        """生成播客脚本"""
+        
+        word_count = duration * 2.5  # 假设每秒2.5个字
+        
+        prompt = f"""
+创作一期播客节目脚本。
+
+类型: {content_type}
+话题: {topic}
+时长: {duration//60}分钟
+字数: 约{int(word_count)}字
+
+脚本结构:
+1. 标题: 吸引人的标题
+2. 引言(100字): 开场白
+3. 主体(核心内容):
+   - 分3-4个小节
+   - 每节有小标题
+   - 内容深入浅出
+   - 包含故事、例子、思考
+4. 结语(100字): 总结和感悟
+
+语言要求:
+- 口语化,像面对面聊天
+- 用"你"和"我"拉近距离
+- 适当提问,引发思考
+- 避免说教,多用故事
+- 标注停顿点: (停顿)
+
+示例开头:
+"嗨,今天想和你聊聊...(停顿)
+你有没有想过,为什么..."
+
+请以JSON格式返回:
+{{
+  "title": "标题",
+  "description": "简介",
+  "intro": "引言",
+  "sections": [
+    {{
+      "subtitle": "小节标题",
+      "content": "内容",
+      "duration": 预估时长
+    }}
+  ],
+  "outro": "结语",
+  "full_text": "完整文本",
+  "tags": ["标签1", "标签2"],
+  "key_points": ["要点1", "要点2"]
+}}
+        """
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "你是专业的播客主播,善于用声音讲故事。"
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            response_format={"type": "json_object"},
+            temperature=0.7,
+            max_tokens=3000
+        )
+        
+        return json.loads(response.choices[0].message.content)
+    
+    async def _generate_audio_segments(
+        self,
+        script: Dict
+    ) -> List[Dict]:
+        """生成音频片段"""
+        
+        segments = []
+        
+        # 引言
+        intro_audio = await self._text_to_speech(
+            script["intro"],
+            voice="alloy",
+            speed=0.95
+        )
+        segments.append({
+            "type": "intro",
+            "text": script["intro"],
+            "audio_url": intro_audio["url"],
+            "duration": intro_audio["duration"]
+        })
+        
+        # 各小节
+        for idx, section in enumerate(script["sections"]):
+            section_audio = await self._text_to_speech(
+                section["content"],
+                voice="alloy",
+                speed=0.95
+            )
+            segments.append({
+                "type": "section",
+                "index": idx + 1,
+                "subtitle": section["subtitle"],
+                "text": section["content"],
+                "audio_url": section_audio["url"],
+                "duration": section_audio["duration"]
+            })
+        
+        # 结语
+        outro_audio = await self._text_to_speech(
+            script["outro"],
+            voice="alloy",
+            speed=0.9
+        )
+        segments.append({
+            "type": "outro",
+            "text": script["outro"],
+            "audio_url": outro_audio["url"],
+            "duration": outro_audio["duration"]
+        })
+        
+        return segments
+    
+    async def _generate_radio_audio(
+        self,
+        script: Dict
+    ) -> List[Dict]:
+        """生成电台音频"""
+        
+        audio_segments = []
+        
+        # 开场
+        opening_audio = await self._text_to_speech(
+            script["opening"],
+            voice="onyx",  # 更有磁性的声音
+            speed=0.9
+        )
+        audio_segments.append({
+            "type": "opening",
+            "text": script["opening"],
+            "audio_url": opening_audio["url"]
+        })
+        
+        # 各个片段
+        for segment in script["segments"]:
+            if segment["type"] == "music":
+                audio_segments.append({
+                    "type": "music",
+                    "name": segment["text"],
+                    "duration": segment["duration"]
+                })
+            else:
+                seg_audio = await self._text_to_speech(
+                    segment["text"],
+                    voice="onyx",
+                    speed=0.9
+                )
+                audio_segments.append({
+                    "type": segment["type"],
+                    "text": segment["text"],
+                    "audio_url": seg_audio["url"]
+                })
+        
+        # 结束
+        closing_audio = await self._text_to_speech(
+            script["closing"],
+            voice="onyx",
+            speed=0.85
+        )
+        audio_segments.append({
+            "type": "closing",
+            "text": script["closing"],
+            "audio_url": closing_audio["url"]
+        })
+        
+        return audio_segments
+    
+    async def _generate_audiobook_audio(
+        self,
+        content: str
+    ) -> Dict:
+        """生成有声书音频"""
+        
+        # 分段处理长文本
+        max_chunk = 4000  # OpenAI TTS限制
+        chunks = [content[i:i+max_chunk] for i in range(0, len(content), max_chunk)]
+        
+        audio_urls = []
+        total_duration = 0
+        
+        for chunk in chunks:
+            audio = await self._text_to_speech(
+                chunk,
+                voice="nova",  # 适合朗读的声音
+                speed=0.9
+            )
+            audio_urls.append(audio["url"])
+            total_duration += audio["duration"]
+        
+        # 实际应用中需要合并音频文件
+        return {
+            "url": f"/storage/audio/audiobook/{int(datetime.now().timestamp())}.mp3",
+            "duration": total_duration,
+            "segments": audio_urls
+        }
+    
+    async def _text_to_speech(
+        self,
+        text: str,
+        voice: str = "alloy",
+        speed: float = 1.0
+    ) -> Dict:
+        """文本转语音"""
+        
+        try:
+            response = await openai.Audio.acreate(
+                model="tts-1-hd",
+                input=text,
+                voice=voice,
+                speed=speed
+            )
+            
+            filename = f"tts_{int(datetime.now().timestamp())}_{hash(text)}.mp3"
+            # 保存音频...
+            
+            return {
+                "url": f"/storage/audio/generated/{filename}",
+                "duration": len(text) * 0.12 / speed  # 粗略估算
+            }
+        except Exception as e:
+            print(f"TTS Error: {e}")
+            return {"url": "", "duration": 0}
+    
+    async def _generate_chapter_summary(
+        self,
+        content: str
+    ) -> str:
+        """生成章节摘要"""
+        
+        prompt = f"用50字概括这一章的核心内容:\n\n{content[:500]}..."
+        
+        response = await openai.ChatCompletion.acreate(
+            model="gpt-4-turbo-preview",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.5,
+            max_tokens=100
+        )
+        
+        return response.choices[0].message.content
+</file>
+
+<file path="leiShiAiAgent/backend-ai/app/main.py">
+"""
+AI Emotion Companion - FastAPI AI Agent
+文件: backend/ai-agent/app/main.py
+功能: AI代理主服务,处理情感识别、故事生成、音乐混音
+"""
+
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, File, UploadFile, Depends
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
+from typing import List, Optional, Dict
+import asyncio
+import json
+from datetime import datetime
+
+from app.services.emotion_analyzer import EmotionAnalyzer
+from app.services.story_generator import StoryGenerator
+from app.services.music_mixer import MusicMixer
+from app.services.voice_synthesizer import VoiceSynthesizer
+
+app = FastAPI(
+    title="AI Emotion Companion API",
+    description="基于情感识别的AI交互系统",
+    version="1.0.0"
+)
+
+# CORS配置
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# 初始化服务
+emotion_analyzer = EmotionAnalyzer()
+story_generator = StoryGenerator()
+music_mixer = MusicMixer()
+voice_synthesizer = VoiceSynthesizer()
+
+# WebSocket连接管理
+class ConnectionManager:
+    def __init__(self):
+        self.active_connections: Dict[str, WebSocket] = {}
+    
+    async def connect(self, websocket: WebSocket, client_id: str):
+        await websocket.accept()
+        self.active_connections[client_id] = websocket
+    
+    def disconnect(self, client_id: str):
+        if client_id in self.active_connections:
+            del self.active_connections[client_id]
+    
+    async def send_message(self, message: dict, client_id: str):
+        if client_id in self.active_connections:
+            await self.active_connections[client_id].send_json(message)
+    
+    async def broadcast(self, message: dict):
+        for connection in self.active_connections.values():
+            await connection.send_json(message)
+
+manager = ConnectionManager()
+
+# 数据模型
+class EmotionRequest(BaseModel):
+    audio_data: Optional[str] = None
+    text: Optional[str] = None
+    scene: str  # "car", "ktv", "story"
+    user_age: int
+    group_size: int
+
+class SceneConfig(BaseModel):
+    scene_type: str
+    participants: List[Dict]
+    settings: Dict
+
+class MusicMixRequest(BaseModel):
+    emotions: List[str]
+    participants: List[Dict]
+    style: str
+
+# API端点
+@app.get("/")
+async def root():
+    return {
+        "service": "AI Emotion Companion",
+        "status": "running",
+        "timestamp": datetime.now().isoformat()
+    }
+
+@app.post("/api/v1/emotion/analyze")
+async def analyze_emotion(request: EmotionRequest):
+    """分析情绪 - 支持音频和文本输入"""
+    try:
+        result = await emotion_analyzer.analyze(
+            audio_data=request.audio_data,
+            text=request.text,
+            scene=request.scene,
+            user_age=request.user_age
+        )
+        
+        return JSONResponse(content={
+            "success": True,
+            "data": {
+                "emotion": result["emotion"],
+                "confidence": result["confidence"],
+                "valence": result["valence"],  # 情感正负向
+                "arousal": result["arousal"],  # 情感激活度
+                "suggestions": result["suggestions"],
+                "timestamp": datetime.now().isoformat()
+            }
+        })
+    except Exception as e:
+        return JSONResponse(status_code=500, content={
+            "success": False,
+            "error": str(e)
+        })
+
+@app.post("/api/v1/story/generate")
+async def generate_story(scene_config: SceneConfig):
+    """生成AI互动故事"""
+    try:
+        story = await story_generator.create_story(
+            scene_type=scene_config.scene_type,
+            participants=scene_config.participants,
+            settings=scene_config.settings
+        )
+        
+        return JSONResponse(content={
+            "success": True,
+            "data": {
+                "story_id": story["id"],
+                "title": story["title"],
+                "intro": story["intro"],
+                "characters": story["characters"],
+                "first_scene": story["scenes"][0],
+                "options": story["options"]
+            }
+        })
+    except Exception as e:
+        return JSONResponse(status_code=500, content={
+            "success": False,
+            "error": str(e)
+        })
+
+@app.post("/api/v1/music/mix")
+async def mix_music(request: MusicMixRequest):
+    """AI音乐混音 - 根据多人情绪生成个性化音乐"""
+    try:
+        mix_result = await music_mixer.create_mix(
+            emotions=request.emotions,
+            participants=request.participants,
+            style=request.style
+        )
+        
+        return JSONResponse(content={
+            "success": True,
+            "data": {
+                "mix_id": mix_result["id"],
+                "tracks": mix_result["tracks"],
+                "bpm": mix_result["bpm"],
+                "key": mix_result["key"],
+                "audio_url": mix_result["audio_url"],
+                "duration": mix_result["duration"]
+            }
+        })
+    except Exception as e:
+        return JSONResponse(status_code=500, content={
+            "success": False,
+            "error": str(e)
+        })
+
+@app.post("/api/v1/voice/synthesize")
+async def synthesize_voice(
+    text: str,
+    emotion: str,
+    age_group: str,
+    voice_style: str = "companion"
+):
+    """AI语音合成 - 带情感的语音输出"""
+    try:
+        audio = await voice_synthesizer.synthesize(
+            text=text,
+            emotion=emotion,
+            age_group=age_group,
+            voice_style=voice_style
+        )
+        
+        return JSONResponse(content={
+            "success": True,
+            "data": {
+                "audio_url": audio["url"],
+                "duration": audio["duration"],
+                "format": audio["format"]
+            }
+        })
+    except Exception as e:
+        return JSONResponse(status_code=500, content={
+            "success": False,
+            "error": str(e)
+        })
+
+@app.websocket("/ws/{client_id}")
+async def websocket_endpoint(websocket: WebSocket, client_id: str):
+    """WebSocket实时通信 - 用于实时情感交互"""
+    await manager.connect(websocket, client_id)
+    
+    try:
+        while True:
+            data = await websocket.receive_json()
+            message_type = data.get("type")
+            
+            if message_type == "emotion":
+                # 实时情感分析
+                emotion_result = await emotion_analyzer.analyze(
+                    audio_data=data.get("audio"),
+                    text=data.get("text"),
+                    scene=data.get("scene"),
+                    user_age=data.get("age", 25)
+                )
+                
+                await manager.send_message({
+                    "type": "emotion_result",
+                    "data": emotion_result
+                }, client_id)
+                
+            elif message_type == "story_action":
+                # 故事互动
+                story_response = await story_generator.process_action(
+                    story_id=data.get("story_id"),
+                    action=data.get("action"),
+                    participant_id=data.get("participant_id")
+                )
+                
+                # 广播给所有参与者
+                await manager.broadcast({
+                    "type": "story_update",
+                    "data": story_response
+                })
+                
+            elif message_type == "music_control":
+                # 音乐控制
+                music_response = await music_mixer.control(
+                    mix_id=data.get("mix_id"),
+                    action=data.get("action"),
+                    params=data.get("params")
+                )
+                
+                await manager.send_message({
+                    "type": "music_update",
+                    "data": music_response
+                }, client_id)
+                
+    except WebSocketDisconnect:
+        manager.disconnect(client_id)
+        print(f"Client {client_id} disconnected")
+
+@app.post("/api/v1/scene/initialize")
+async def initialize_scene(scene_config: SceneConfig):
+    """初始化场景 - 根据场景类型和人群配置AI行为"""
+    try:
+        # 根据年龄和人数配置不同功能
+        config = {
+            "scene_type": scene_config.scene_type,
+            "participants": scene_config.participants,
+            "features": []
+        }
+        
+        avg_age = sum(p["age"] for p in scene_config.participants) / len(scene_config.participants)
+        
+        # 儿童场景 (< 12岁)
+        if avg_age < 12:
+            config["features"] = ["story", "simple_music", "educational"]
+            config["content_filter"] = "strict"
+            
+        # 青少年场景 (12-18岁)
+        elif avg_age < 18:
+            config["features"] = ["story", "music_mix", "game", "social"]
+            config["content_filter"] = "moderate"
+            
+        # 成人场景 (18+)
+        else:
+            config["features"] = ["story", "music_mix", "karaoke", "emotion_support"]
+            config["content_filter"] = "none"
+        
+        # 场景特定功能
+        if scene_config.scene_type == "car":
+            config["features"].extend(["driver_safety", "ambient_music"])
+        elif scene_config.scene_type == "ktv":
+            config["features"].extend(["karaoke", "group_harmony", "vocal_effects"])
+        
+        return JSONResponse(content={
+            "success": True,
+            "data": config
+        })
+        
+    except Exception as e:
+        return JSONResponse(status_code=500, content={
+            "success": False,
+            "error": str(e)
+        })
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+</file>
+
+<file path="leiShiAiAgent/backend-nodejs/src/app.js">
+/**
+ * Node.js 主服务器
+ * 文件: backend/nodejs-server/src/app.js
+ * 功能: WebSocket实时通信、REST API、Prompt引擎
+ */
+
+const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
+const cors = require('cors');
+const axios = require('axios');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+
+// 中间件
+app.use(cors());
+app.use(express.json({ limit: '50mb' }));
+app.use(express.static('public'));
+
+// 配置
+const config = {
+  port: process.env.PORT || 3000,
+  fastApiUrl: process.env.FASTAPI_URL || 'http://localhost:8000',
+  openaiApiKey: process.env.OPENAI_API_KEY
+};
+
+// OpenAI服务
+const OpenAIService = {
+  async chat(messages, options = {}) {
+    try {
+      const response = await axios.post(
+        'https://api.openai.com/v1/chat/completions',
+        {
+          model: options.model || 'gpt-4-turbo-preview',
+          messages,
+          temperature: options.temperature || 0.7,
+          max_tokens: options.maxTokens || 1000
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${config.openaiApiKey}`,
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      return response.data.choices[0].message.content;
+    } catch (error) {
+      console.error('OpenAI API Error:', error.response?.data || error.message);
+      throw error;
+    }
+  },
+
+  async generateAudio(text, options = {}) {
+    try {
+      const response = await axios.post(
+        'https://api.openai.com/v1/audio/speech',
+        {
+          model: 'tts-1',
+          input: text,
+          voice: options.voice || 'alloy',
+          speed: options.speed || 1.0
+        },
+        {
+          headers: {
+            'Authorization': `Bearer ${config.openaiApiKey}`,
+            'Content-Type': 'application/json'
+          },
+          responseType: 'arraybuffer'
+        }
+      );
+      return Buffer.from(response.data).toString('base64');
+    } catch (error) {
+      console.error('Audio Generation Error:', error);
+      throw error;
+    }
+  }
+};
+
+// Prompt引擎
+const PromptEngine = {
+  // 情感响应Prompt
+  emotionResponse(emotion, scene, userAge) {
+    const ageGroup = userAge < 12 ? '儿童' : userAge < 18 ? '青少年' : '成人';
+    
+    const prompts = {
+      car: {
+        happy: `作为一个${ageGroup}的AI旅行伙伴,用户现在心情很好,在车上。请用温暖、欢快的语气回应,可以分享一些有趣的话题或建议播放欢快的音乐。`,
+        sad: `作为一个${ageGroup}的AI情感伙伴,用户现在情绪低落,在车上。请用温柔、支持的语气回应,提供情感支持,可以播放治愈的音乐或分享鼓励的故事。`,
+        anxious: `作为一个${ageGroup}的AI安全伙伴,用户现在感到焦虑,在驾驶中。请用平静、舒缓的语气回应,建议播放放松的音乐,并提醒注意安全。`,
+        angry: `作为一个${ageGroup}的AI冷静伙伴,用户现在情绪激动,在车上。请用平和、理性的语气回应,帮助用户冷静下来,建议休息或播放舒缓音乐。`
+      },
+      ktv: {
+        happy: `作为KTV的AI助手,用户们现在很开心。推荐一些热门、欢快的歌曲,鼓励大家一起合唱,营造欢乐气氛。`,
+        excited: `作为KTV的AI DJ,气氛很嗨!推荐节奏感强的歌曲,可以开启特效模式,让派对更精彩。`,
+        sad: `作为KTV的AI知心朋友,有人情绪低落。推荐一些抒情、治愈的歌曲,给予情感支持,让音乐帮助表达情感。`,
+        calm: `作为KTV的AI音乐顾问,气氛比较平静。推荐一些经典、舒缓的歌曲,适合小组慢慢欣赏。`
+      },
+      story: {
+        happy: `作为AI故事讲述者,参与者心情愉快。创造一个轻松、冒险的故事情节,充满惊喜和乐趣。`,
+        anxious: `作为AI故事引导者,参与者有些紧张。创造一个悬疑但不过分恐怖的情节,适度的紧张感能增加参与度。`,
+        excited: `作为AI剧情大师,参与者很兴奋。创造一个高潮迭起、充满转折的故事,满足他们的冒险欲望。`
+      }
+    };
+
+    return prompts[scene]?.[emotion] || `作为AI伙伴,根据用户的${emotion}情绪,提供合适的互动。`;
+  },
+
+  // 故事生成Prompt
+  storyGeneration(sceneType, participants, currentPlot) {
+    const participantDesc = participants.map(p => 
+      `${p.name}(${p.age}岁, ${p.role || '参与者'})`
+    ).join(', ');
+
+    return `
+你是一个互动故事创作大师。
+
+参与者: ${participantDesc}
+场景: ${sceneType}
+当前剧情: ${currentPlot || '故事开始'}
+
+请创作下一个故事片段,要求:
+1. 情节要有趣、引人入胜
+2. 给每个参与者分配角色和任务
+3. 提供3-4个选择让参与者决定故事走向
+4. 语言要适合参与者的年龄
+5. 包含适度的悬念和转折
+
+以JSON格式返回:
+{
+  "scene": "场景描述(100-200字)",
+  "characters": {
+    "角色名": "角色当前状态和行动"
+  },
+  "options": [
+    {"id": 1, "text": "选项1", "consequence": "可能结果"},
+    {"id": 2, "text": "选项2", "consequence": "可能结果"}
+  ],
+  "emotion": "建议的场景氛围"
+}
+    `;
+  },
+
+  // 音乐混音Prompt
+  musicMixing(emotions, participants, style) {
+    return `
+作为AI音乐制作人,为多人场景创造个性化音乐。
+
+参与者情绪: ${emotions.join(', ')}
+参与者信息: ${JSON.stringify(participants)}
+风格偏好: ${style}
+
+请设计音乐混音方案,以JSON格式返回:
+{
+  "bpm": "建议的BPM(60-180)",
+  "key": "建议的调性",
+  "instruments": ["使用的乐器列表"],
+  "structure": {
+    "intro": "前奏设计",
+    "verse": "主歌设计",
+    "chorus": "副歌设计",
+    "outro": "尾奏设计"
+  },
+  "effects": ["音效列表"],
+  "personalTracks": {
+    "参与者名": "个性化音轨描述"
+  }
+}
+    `;
+  }
+};
+
+// WebSocket连接管理
+const sessions = new Map(); // sessionId -> session data
+
+io.on('connection', (socket) => {
+  console.log('Client connected:', socket.id);
+
+  // 初始化会话
+  socket.on('init_session', async (data) => {
+    const { sessionId, scene, participants } = data;
+    
+    sessions.set(sessionId, {
+      scene,
+      participants,
+      emotions: {},
+      currentStory: null,
+      musicMix: null,
+      startTime: Date.now()
+    });
+
+    socket.join(sessionId);
+    socket.emit('session_ready', { sessionId, status: 'initialized' });
+  });
+
+  // 实时情感分析
+  socket.on('emotion_update', async (data) => {
+    const { sessionId, userId, audioData, text } = data;
+    const session = sessions.get(sessionId);
+
+    if (!session) {
+      socket.emit('error', { message: 'Session not found' });
+      return;
+    }
+
+    try {
+      // 调用FastAPI进行情感分析
+      const emotionResult = await axios.post(
+        `${config.fastApiUrl}/api/v1/emotion/analyze`,
+        {
+          audio_data: audioData,
+          text,
+          scene: session.scene,
+          user_age: session.participants.find(p => p.id === userId)?.age || 25,
+          group_size: session.participants.length
+        }
+      );
+
+      const emotion = emotionResult.data.data;
+      
+      // 更新会话情感状态
+      session.emotions[userId] = emotion;
+
+      // 生成AI响应
+      const prompt = PromptEngine.emotionResponse(
+        emotion.emotion,
+        session.scene,
+        session.participants.find(p => p.id === userId)?.age || 25
+      );
+
+      const aiResponse = await OpenAIService.chat([
+        { role: 'system', content: prompt },
+        { role: 'user', content: text || '...' }
+      ]);
+
+      // 生成语音
+      const audioResponse = await OpenAIService.generateAudio(
+        aiResponse,
+        { voice: 'alloy', speed: 1.0 }
+      );
+
+      // 广播给房间内所有人
+      io.to(sessionId).emit('emotion_result', {
+        userId,
+        emotion,
+        aiResponse,
+        audioResponse
+      });
+
+    } catch (error) {
+      console.error('Emotion update error:', error);
+      socket.emit('error', { message: 'Emotion analysis failed' });
+    }
+  });
+
+  // 故事互动
+  socket.on('story_action', async (data) => {
+    const { sessionId, action, userId } = data;
+    const session = sessions.get(sessionId);
+
+    if (!session) return;
+
+    try {
+      const prompt = PromptEngine.storyGeneration(
+        session.scene,
+        session.participants,
+        session.currentStory
+      );
+
+      const storyUpdate = await OpenAIService.chat([
+        { role: 'system', content: prompt },
+        { role: 'user', content: `参与者选择了: ${action}` }
+      ], { temperature: 0.8 });
+
+      const storyData = JSON.parse(storyUpdate);
+      session.currentStory = storyData;
+
+      // 生成故事语音
+      const audioNarration = await OpenAIService.generateAudio(
+        storyData.scene,
+        { voice: 'onyx', speed: 0.95 }
+      );
+
+      io.to(sessionId).emit('story_update', {
+        story: storyData,
+        audio: audioNarration
+      });
+
+    } catch (error) {
+      console.error('Story action error:', error);
+    }
+  });
+
+  // 音乐混音请求
+  socket.on('music_mix', async (data) => {
+    const { sessionId } = data;
+    const session = sessions.get(sessionId);
+
+    if (!session) return;
+
+    try {
+      const emotions = Object.values(session.emotions).map(e => e.emotion);
+      
+      const prompt = PromptEngine.musicMixing(
+        emotions,
+        session.participants,
+        data.style || 'adaptive'
+      );
+
+      const mixPlan = await OpenAIService.chat([
+        { role: 'system', content: prompt }
+      ], { temperature: 0.7 });
+
+      const mixData = JSON.parse(mixPlan);
+
+      // 调用FastAPI生成实际音乐
+      const musicResult = await axios.post(
+        `${config.fastApiUrl}/api/v1/music/mix`,
+        {
+          emotions,
+          participants: session.participants,
+          style: data.style || 'adaptive'
+        }
+      );
+
+      session.musicMix = musicResult.data.data;
+
+      io.to(sessionId).emit('music_ready', {
+        mix: session.musicMix,
+        plan: mixData
+      });
+
+    } catch (error) {
+      console.error('Music mix error:', error);
+    }
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected:', socket.id);
+  });
+});
+
+// REST API端点
+app.get('/api/health', (req, res) => {
+  res.json({
+    status: 'healthy',
+    service: 'AI Emotion Companion - Node.js Server',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
+// 获取会话信息
+app.get('/api/sessions/:sessionId', (req, res) => {
+  const session = sessions.get(req.params.sessionId);
+  if (!session) {
+    return res.status(404).json({ error: 'Session not found' });
+  }
+  res.json(session);
+});
+
+// 创建新会话
+app.post('/api/sessions', (req, res) => {
+  const { scene, participants } = req.body;
+  const sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  
+  sessions.set(sessionId, {
+    scene,
+    participants,
+    emotions: {},
+    currentStory: null,
+    musicMix: null,
+    startTime: Date.now()
+  });
+
+  res.json({ sessionId, status: 'created' });
+});
+
+// 错误处理
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Internal server error' });
+});
+
+// 启动服务器
+server.listen(config.port, () => {
+  console.log(`🚀 Server running on port ${config.port}`);
+  console.log(`📡 WebSocket ready for connections`);
+  console.log(`🤖 FastAPI backend: ${config.fastApiUrl}`);
+});
+
+module.exports = { app, io };
+</file>
+
+<file path="leiShiAiAgent/backend-nodejs/.env.example">
+# ==========================================
+# backend/nodejs-server/.env.example
+# ==========================================
+
+# 服务配置
+NODE_ENV=development
+PORT=3000
+
+# OpenAI配置
+OPENAI_API_KEY=your_openai_api_key_here
+
+# FastAPI后端地址
+FASTAPI_URL=http://localhost:8000
+
+# 数据库(可选)
+# DATABASE_URL=postgresql://user:password@localhost:5432/ai_companion
+
+# Redis(可选,用于会话管理)
+# REDIS_URL=redis://localhost:6379
+
+# CORS
+CORS_ORIGIN=*
+
+# 日志级别
+LOG_LEVEL=info
+</file>
+
+<file path="leiShiAiAgent/deployment/docker/docker-compose.yml">
+# Docker Compose配置
+# 文件: deployment/docker/docker-compose.yml
+# 功能: 一键部署所有服务
+
+version: '3.8'
+
+services:
+  # Node.js主服务
+  nodejs-server:
+    build:
+      context: ../../backend/nodejs-server
+      dockerfile: ../../deployment/docker/Dockerfile.nodejs
+    container_name: ai-companion-nodejs
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - FASTAPI_URL=http://fastapi-agent:8000
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      - nodejs-logs:/app/logs
+    networks:
+      - ai-companion-network
+    depends_on:
+      - fastapi-agent
+
+  # FastAPI AI代理
+  fastapi-agent:
+    build:
+      context: ../../backend/ai-agent
+      dockerfile: ../../deployment/docker/Dockerfile.fastapi
+    container_name: ai-companion-fastapi
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ENVIRONMENT=production
+    volumes:
+      - fastapi-logs:/app/logs
+    networks:
+      - ai-companion-network
+
+  # Nginx反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: ai-companion-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ../../frontend/mobile-h5/dist:/usr/share/nginx/html:ro
+      - nginx-logs:/var/log/nginx
+    networks:
+      - ai-companion-network
+    depends_on:
+      - nodejs-server
+      - fastapi-agent
+
+volumes:
+  nodejs-logs:
+  fastapi-logs:
+  nginx-logs:
+
+networks:
+  ai-companion-network:
+    driver: bridge
+</file>
+
+<file path="leiShiAiAgent/deployment/docker/Dockerfile.nodejs">
+# ==========================================
+# deployment/docker/Dockerfile.nodejs
+# ==========================================
+
+FROM node:18-alpine
+
+WORKDIR /app
+
+# 安装依赖
+COPY package*.json ./
+RUN npm ci --only=production
+
+# 复制源代码
+COPY src/ ./src/
+
+# 创建日志目录
+RUN mkdir -p /app/logs
+
+# 暴露端口
+EXPOSE 3000
+
+# 启动应用
+CMD ["node", "src/app.js"]
+</file>
+
+<file path="leiShiAiAgent/deployment/scripts/deploy.sh">
+# ==========================================
+# deployment/scripts/deploy.sh
+# ==========================================
+
+#!/bin/bash
+
+# AI情感伴侣系统部署脚本
+
+set -e
+
+echo "🚀 开始部署 AI Emotion Companion System..."
+
+# 检查环境变量
+if [ ! -f ".env" ]; then
+    echo "❌ 错误: .env 文件不存在"
+    echo "请复制 .env.example 并填入配置"
+    exit 1
+fi
+
+# 加载环境变量
+export $(cat .env | xargs)
+
+# 检查OpenAI API Key
+if [ -z "$OPENAI_API_KEY" ]; then
+    echo "❌ 错误: OPENAI_API_KEY 未设置"
+    exit 1
+fi
+
+echo "✅ 环境变量检查完成"
+
+# 构建前端
+echo "📦 构建前端..."
+cd frontend/mobile-h5
+npm install
+npm run build
+cd ../..
+
+echo "✅ 前端构建完成"
+
+# 启动Docker服务
+echo "🐳 启动Docker服务..."
+cd deployment/docker
+docker-compose down
+docker-compose up -d --build
+
+echo "⏳ 等待服务启动..."
+sleep 10
+
+# 检查服务状态
+echo "🔍 检查服务状态..."
+
+# 检查Node.js
+if curl -f http://localhost:3000/api/health > /dev/null 2>&1; then
+    echo "✅ Node.js服务运行正常"
+else
+    echo "❌ Node.js服务启动失败"
+fi
+
+# 检查FastAPI
+if curl -f http://localhost:8000/ > /dev/null 2>&1; then
+    echo "✅ FastAPI服务运行正常"
+else
+    echo "❌ FastAPI服务启动失败"
+fi
+
+# 检查Nginx
+if curl -f http://localhost/ > /dev/null 2>&1; then
+    echo "✅ Nginx服务运行正常"
+else
+    echo "❌ Nginx服务启动失败"
+fi
+
+echo ""
+echo "🎉 部署完成!"
+echo ""
+echo "访问地址:"
+echo "  前端: http://localhost"
+echo "  Node.js API: http://localhost:3000"
+echo "  FastAPI: http://localhost:8000"
+echo ""
+echo "查看日志:"
+echo "  docker-compose logs -f nodejs-server"
+echo "  docker-compose logs -f fastapi-agent"
+echo ""
+</file>
+
+<file path="leiShiAiAgent/frontend-web/src/App.jsx">
+/**
+ * 声境 SoundScape - 主应用
+ * 文件: frontend-web/src/App.jsx
+ * 功能: 完整的应用流程 - 情绪识别 → 场景推荐 → 内容生成 → 记忆存储
+ */
+
+import React, { useState, useEffect, useRef } from 'react';
+import { io } from 'socket.io-client';
+import './App.css';
+
+// ==================== 应用状态枚举 ====================
+const AppState = {
+  WELCOME: 'welcome',
+  EMOTION_DETECTION: 'emotion_detection',
+  SCENE_SELECTION: 'scene_selection',
+  HEALING: 'healing',          // 疗愈站
+  THEATRE: 'theatre',          // 声音剧场
+  WORKSHOP: 'workshop',        // 音乐工坊
+  ASSISTANT: 'assistant',      // 个人助手
+  MEMORY: 'memory'             // 记忆库
+};
+
+// ==================== 情绪可视化组件 ====================
+const EmotionSphere = ({ emotion, intensity }) => {
+  const emotions = {
+    sad: { color: '#6B7AA1', glow: '#9BAFD9', label: '悲伤' },
+    calm: { color: '#4ECDC4', glow: '#81E6E1', label: '平静' },
+    happy: { color: '#FFD93D', glow: '#FFE66D', label: '快乐' },
+    neutral: { color: '#95A3B3', glow: '#BCC5CF', label: '中性' }
+  };
+
+  const current = emotions[emotion] || emotions.neutral;
+  
+  return (
+    <div className="emotion-sphere-container">
+      <div 
+        className="emotion-sphere"
+        style={{
+          background: `radial-gradient(circle at 30% 30%, ${current.glow}, ${current.color})`,
+          boxShadow: `0 0 ${intensity * 50}px ${intensity * 30}px ${current.glow}40`,
+          transform: `scale(${0.8 + intensity * 0.4})`
+        }}
+      >
+        <div className="emotion-particles">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i} 
+              className="particle"
+              style={{
+                animationDelay: `${i * 0.1}s`,
+                background: current.glow
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      <div className="emotion-label">{current.label}</div>
+      <div className="emotion-intensity">
+        <div className="intensity-bar">
+          <div 
+            className="intensity-fill"
+            style={{ width: `${intensity * 100}%`, background: current.color }}
+          />
+        </div>
+        <span>{Math.round(intensity * 100)}%</span>
+      </div>
+    </div>
+  );
+};
+
+// ==================== 语音录制组件 ====================
+const VoiceRecorder = ({ onRecord, isRecording, onStop }) => {
+  return (
+    <div className="voice-recorder">
+      <button
+        className={`record-button ${isRecording ? 'recording' : ''}`}
+        onMouseDown={onRecord}
+        onMouseUp={onStop}
+        onTouchStart={onRecord}
+        onTouchEnd={onStop}
+      >
+        <div className="record-icon">
+          {isRecording ? (
+            <>
+              <div className="recording-wave" />
+              <span>正在倾听...</span>
+            </>
+          ) : (
+            <>
+              <div className="mic-icon">🎤</div>
+              <span>按住说话</span>
+            </>
+          )}
+        </div>
+      </button>
+      <p className="hint">或者,直接和我聊天</p>
+    </div>
+  );
+};
+
+// ==================== 场景推荐卡片 ====================
+const SceneCard = ({ scene, onSelect }) => {
+  const scenes = {
+    healing: {
+      icon: '🌙',
+      title: '声音疗愈站',
+      description: '让温柔的声音陪伴你',
+      color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      features: ['AI陪伴对话', '治愈音乐', '冥想引导', '情绪日记']
+    },
+    theatre: {
+      icon: '📻',
+      title: '声音剧场',
+      description: '用声音探索世界',
+      color: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+      features: ['AI播客', '深夜电台', '有声书', '知识漫谈']
+    },
+    workshop: {
+      icon: '🎵',
+      title: 'AI音乐工坊',
+      description: '创作属于你的歌',
+      color: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+      features: ['哼唱转歌曲', '自动编曲', '混音创作', '作品分享']
+    },
+    assistant: {
+      icon: '🤝',
+      title: '个人声音助手',
+      description: '你的日常伙伴',
+      color: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+      features: ['语音对话', '新闻播报', '日程提醒', '灵感记录']
+    }
+  };
+
+  const config = scenes[scene];
+
+  return (
+    <div 
+      className="scene-card"
+      style={{ background: config.color }}
+      onClick={() => onSelect(scene)}
+    >
+      <div className="scene-icon">{config.icon}</div>
+      <h3>{config.title}</h3>
+      <p>{config.description}</p>
+      <ul className="scene-features">
+        {config.features.map((feature, idx) => (
+          <li key={idx}>{feature}</li>
+        ))}
+      </ul>
+      <button className="enter-button">进入 →</button>
+    </div>
+  );
+};
+
+// ==================== 主应用 ====================
+function App() {
+  // 状态管理
+  const [appState, setAppState] = useState(AppState.WELCOME);
+  const [socket, setSocket] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const [sessionId, setSessionId] = useState(null);
+  
+  // 情绪相关
+  const [emotion, setEmotion] = useState({ type: 'neutral', intensity: 0.5 });
+  const [emotionHistory, setEmotionHistory] = useState([]);
+  
+  // 内容相关
+  const [currentContent, setCurrentContent] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [chatHistory, setChatHistory] = useState([]);
+  
+  // 记忆相关
+  const [memories, setMemories] = useState([]);
+  
+  // 音频相关
+  const audioRef = useRef(null);
+  const [isRecording, setIsRecording] = useState(false);
+  const mediaRecorderRef = useRef(null);
+
+  // ==================== 初始化 ====================
+  useEffect(() => {
+    // 生成或获取用户ID
+    let uid = localStorage.getItem('soundscape_user_id');
+    if (!uid) {
+      uid = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      localStorage.getItem('soundscape_user_id', uid);
+    }
+    setUserId(uid);
+
+    // 建立WebSocket连接
+    const newSocket = io('http://localhost:3000');
+    
+    newSocket.on('connect', () => {
+      console.log('Connected to server');
+      
+      // 创建会话
+      fetch('http://localhost:3000/api/sessions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ user_id: uid })
+      })
+        .then(res => res.json())
+        .then(data => {
+          setSessionId(data.session_id);
+          newSocket.emit('init_session', { session_id: data.session_id });
+        });
+    });
+
+    // 监听情绪分析结果
+    newSocket.on('emotion_result', (data) => {
+      setEmotion({
+        type: data.emotion.emotion,
+        intensity: data.emotion.confidence
+      });
+      setEmotionHistory(prev => [...prev, data.emotion]);
+      
+      // 自动推荐场景
+      recommendScene(data.emotion.emotion);
+    });
+
+    // 监听内容生成结果
+    newSocket.on('content_generated', (data) => {
+      setCurrentContent(data);
+      setIsLoading(false);
+      
+      // 播放音频
+      if (data.audio_url && audioRef.current) {
+        audioRef.current.src = data.audio_url;
+        audioRef.current.play();
+      }
+    });
+
+    setSocket(newSocket);
+
+    return () => newSocket.close();
+  }, []);
+
+  // ==================== 情绪检测 ====================
+  const startRecording = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaRecorderRef.current = new MediaRecorder(stream);
+      const chunks = [];
+
+      mediaRecorderRef.current.ondataavailable = (e) => chunks.push(e.data);
+      
+      mediaRecorderRef.current.onstop = async () => {
+        const blob = new Blob(chunks, { type: 'audio/webm' });
+        await sendAudioForAnalysis(blob);
+        stream.getTracks().forEach(track => track.stop());
+      };
+
+      mediaRecorderRef.current.start();
+      setIsRecording(true);
+    } catch (error) {
+      console.error('录音失败:', error);
+      alert('无法访问麦克风,请检查权限');
+    }
+  };
+
+  const stopRecording = () => {
+    if (mediaRecorderRef.current && isRecording) {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+    }
+  };
+
+  const sendAudioForAnalysis = async (audioBlob) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const base64Audio = reader.result.split(',')[1];
+      socket.emit('analyze_emotion', {
+        session_id: sessionId,
+        user_id: userId,
+        audio_data: base64Audio
+      });
+      setIsLoading(true);
+    };
+    reader.readAsDataURL(audioBlob);
+  };
+
+  const sendTextForAnalysis = (text) => {
+    socket.emit('analyze_emotion', {
+      session_id: sessionId,
+      user_id: userId,
+      text
+    });
+    setIsLoading(true);
+  };
+
+  // ==================== 场景推荐 ====================
+  const recommendScene = (emotionType) => {
+    const sceneMap = {
+      sad: 'healing',
+      calm: 'theatre',
+      happy: 'workshop',
+      neutral: 'assistant'
+    };
+    
+    const recommended = sceneMap[emotionType] || 'assistant';
+    
+    // 显示推荐,但让用户选择
+    setAppState(AppState.SCENE_SELECTION);
+  };
+
+  // ==================== 进入场景 ====================
+  const enterScene = (scene) => {
+    setAppState(scene);
+    
+    // 请求场景内容
+    socket.emit('enter_scene', {
+      session_id: sessionId,
+      scene,
+      emotion: emotion.type
+    });
+    setIsLoading(true);
+  };
+
+  // ==================== 保存记忆 ====================
+  const saveMemory = async (content, type) => {
+    try {
+      const response = await fetch('http://localhost:3000/api/memories', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user_id: userId,
+          session_id: sessionId,
+          type,
+          content,
+          emotion: emotion.type
+        })
+      });
+      
+      const memory = await response.json();
+      setMemories(prev => [memory, ...prev]);
+      
+      alert('已保存到记忆库 ✨');
+    } catch (error) {
+      console.error('保存记忆失败:', error);
+    }
+  };
+
+  // ==================== 渲染不同状态 ====================
+  const renderWelcome = () => (
+    <div className="welcome-screen">
+      <div className="logo-container">
+        <h1 className="app-title">声境</h1>
+        <p className="app-subtitle">SoundScape</p>
+        <p className="app-tagline">声音是一种力量,用AI疗愈心灵</p>
+      </div>
+      
+      <button 
+        className="start-button"
+        onClick={() => setAppState(AppState.EMOTION_DETECTION)}
+      >
+        开始旅程 →
+      </button>
+      
+      <div className="feature-preview">
+        <div className="feature-item">
+          <span className="feature-icon">🌙</span>
+          <span>情感陪伴</span>
+        </div>
+        <div className="feature-item">
+          <span className="feature-icon">📻</span>
+          <span>声音剧场</span>
+        </div>
+        <div className="feature-item">
+          <span className="feature-icon">🎵</span>
+          <span>音乐创作</span>
+        </div>
+        <div className="feature-item">
+          <span className="feature-icon">💭</span>
+          <span>记忆珍藏</span>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderEmotionDetection = () => (
+    <div className="emotion-detection-screen">
+      <h2>让我感受你的情绪</h2>
+      <p className="instruction">说出你的感受,或只是静静地说点什么</p>
+      
+      <EmotionSphere 
+        emotion={emotion.type} 
+        intensity={emotion.intensity} 
+      />
+      
+      <VoiceRecorder
+        onRecord={startRecording}
+        onStop={stopRecording}
+        isRecording={isRecording}
+      />
+      
+      <div className="text-input-option">
+        <input
+          type="text"
+          placeholder="或者在这里输入..."
+          onKeyPress={(e) => {
+            if (e.key === 'Enter' && e.target.value.trim()) {
+              sendTextForAnalysis(e.target.value);
+              e.target.value = '';
+            }
+          }}
+        />
+      </div>
+      
+      {isLoading && (
+        <div className="loading-indicator">
+          <div className="spinner" />
+          <p>正在倾听你的心声...</p>
+        </div>
+      )}
+    </div>
+  );
+
+  const renderSceneSelection = () => (
+    <div className="scene-selection-screen">
+      <h2>为你推荐</h2>
+      <p className="emotion-prompt">
+        感受到你的 <strong>{emotion.type}</strong>,
+        这些声音可能适合现在的你
+      </p>
+      
+      <div className="scene-grid">
+        <SceneCard scene="healing" onSelect={enterScene} />
+        <SceneCard scene="theatre" onSelect={enterScene} />
+        <SceneCard scene="workshop" onSelect={enterScene} />
+        <SceneCard scene="assistant" onSelect={enterScene} />
+      </div>
+    </div>
+  );
+
+  // ==================== 场景内容渲染 ====================
+  // (这里简化,实际应该是独立的页面组件)
+  const renderSceneContent = () => {
+    if (isLoading) {
+      return (
+        <div className="loading-screen">
+          <div className="spinner-large" />
+          <p>正在为你生成内容...</p>
+        </div>
+      );
+    }
+
+    return (
+      <div className="scene-content">
+        <div className="scene-header">
+          <button onClick={() => setAppState(AppState.SCENE_SELECTION)}>
+            ← 返回
+          </button>
+          <h2>{currentContent?.title || '加载中...'}</h2>
+          <button onClick={() => saveMemory(currentContent, appState)}>
+            💾 保存
+          </button>
+        </div>
+
+        {currentContent && (
+          <div className="content-display">
+            {/* 根据不同场景显示不同内容 */}
+            {appState === AppState.HEALING && (
+              <div className="healing-content">
+                <p className="ai-message">{currentContent.text}</p>
+                {/* 更多疗愈功能... */}
+              </div>
+            )}
+            
+            {/* 其他场景内容... */}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  // ==================== 主渲染 ====================
+  return (
+    <div className="app">
+      <header className="app-header">
+        <div className="header-left">
+          <h1 onClick={() => setAppState(AppState.WELCOME)}>声境</h1>
+        </div>
+        <div className="header-right">
+          <button onClick={() => setAppState(AppState.MEMORY)}>
+            📚 记忆库
+          </button>
+        </div>
+      </header>
+
+      <main className="app-main">
+        {appState === AppState.WELCOME && renderWelcome()}
+        {appState === AppState.EMOTION_DETECTION && renderEmotionDetection()}
+        {appState === AppState.SCENE_SELECTION && renderSceneSelection()}
+        {[AppState.HEALING, AppState.THEATRE, AppState.WORKSHOP, AppState.ASSISTANT].includes(appState) 
+          && renderSceneContent()}
+      </main>
+
+      {/* 隐藏的音频播放器 */}
+      <audio ref={audioRef} />
+
+      {/* 全局通知 */}
+      <div className="notification-container" />
+    </div>
+  );
+}
+
+export default App;
+</file>
+
+<file path="量化模型/analysis/1">
+
+</file>
+
+<file path="量化模型/backtest/1">
+
+</file>
+
+<file path="量化模型/data/first.py">
+
+</file>
+
+<file path="量化模型/results/1">
+
+</file>
+
+<file path="量化模型/strategy/1">
+
+</file>
+
+<file path="量化模型/Readme.md">
+量化模型Daily
+11.17前期：
+确定基本类库，平台，基础策略编写  
+类库：Python Pandas Numpy+SQL Matplotlib    
+平台：WorldQuant Brain JoinQaunt  
+量化基本流程：数据获取->数据清洗->策略->策略回测->策略优化->模拟盘交易->实盘交易  
+数据获取：Data：Tushare(免费A股数据): pip install tushare   AKShare(免费): pip install akshare  
+数据清洗：通过pandas DataFrame 进行dropna or fill
+量化回测框架：backtrader或vnpy
+SQL：数据，表格视图查询
+
+项目结构  
+first_quant_project/  
+├── data/              # 数据文件  
+├── strategy/          # 策略代码  
+├── backtest/          # 回测代码  
+├── analysis/          # 分析代码  
+├── results/           # 回测结果  
+├── README.md          # 项目说明  
+└── requirements.txt   # 依赖包
+</file>
+
+<file path="量化模型/requirements.txt">
+python:  
+numpy:  
+pandas:  
+matplotlib:  
+Scikit-learn:  
+git:
+</file>
+
+<file path="README.md">
+This is Al_Learning
+</file>
+
+</files>
